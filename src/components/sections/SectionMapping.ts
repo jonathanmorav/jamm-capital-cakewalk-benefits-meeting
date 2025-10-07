@@ -22,13 +22,13 @@ export type DeckSection = {
 
 // Section definitions with updated titles
 export const sections: DeckSection[] = [
-  { id: "cover", title: "Cover" },
+  { id: "cover", title: "Mission Statement" },
   { id: "problem", title: "Problem Statement" },
   { id: "why", title: "Why Benefits Matter" },
-  { id: "barriers", title: "The Problem - Expanded" },
+  { id: "barriers", title: "A Major Structural Problem" },
   { id: "tam", title: "Total Addressable Market" },
   { id: "why-now", title: "Why Now" },
-  { id: "solution", title: "Solution Overview" },
+  { id: "solution", title: "The Cakewalk Experience - Product Demo" },
   { id: "cakewalk-model", title: "The Cakewalk Model" },
   { id: "cakewalk-experience", title: "The Cakewalk Platform" },
   { id: "cakewalk-tech", title: "Technology Stack" },
