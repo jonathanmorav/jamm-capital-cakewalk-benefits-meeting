@@ -75,11 +75,14 @@ const StructuralObstaclesTab = ({
         initial="hidden"
         animate={isVisible && currentTab === "barriers" ? "visible" : "hidden"}
       >
-        {barriers.map((barrier) => (
+        {barriers.map((barrier, index) => (
           <motion.div
             key={barrier.title}
             variants={cardVariants}
-            className="flex h-full flex-col items-center rounded-2xl border border-white/70 bg-white/90 p-6 text-center shadow-sm backdrop-blur"
+            className={`flex h-full flex-col items-center rounded-2xl border border-white/70 bg-white/90 p-6 text-center shadow-sm backdrop-blur 
+              ${index === 3 ? "lg:col-start-1 xl:col-start-auto" : ""}
+              ${index === 4 ? "lg:col-start-3 xl:col-start-auto" : ""}
+            `}
           >
             <div className={`${barrier.bgColor} mb-4 rounded-xl p-4`}>{barrier.icon}</div>
             <h4 className="mb-3 text-lg font-semibold text-brand-darkBlue">{barrier.title}</h4>
