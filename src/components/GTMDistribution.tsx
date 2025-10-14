@@ -141,11 +141,7 @@ const approaches: ApproachDefinition[] = [
         status: "Signed",
       },
     ],
-    milestones: [
-      { label: "Q1–Q2 2025", note: "Launch pilots across 2–3 orgs" },
-      { label: "Q3–Q4 2025", note: "Scale to regional chapters" },
-      { label: "2026", note: "National rollouts + renewals" },
-    ],
+    // Milestones intentionally omitted to remove "Next 24 Months" section for affinity
   },
   {
     id: "embedded",
