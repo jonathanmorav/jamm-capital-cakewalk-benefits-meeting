@@ -94,6 +94,20 @@ const carriers: CarrierDefinition[] = [
   },
 ];
 
+const productCatalog = [
+  "Long Term Disability",
+  "Short Term Disability",
+  "Accident Insurance",
+  "Long Term Care",
+  "Critical Illness / Cancer",
+  "Identity Theft",
+  "Dental",
+  "Vision",
+  "Medical / Supplemental Health",
+  "Excess Disability",
+  "Telehealth",
+];
+
 // Removed Proof Points card
 
 const CarrierPartnerships = ({ onNavigateNext }: { onNavigateNext: () => void }) => {
@@ -197,6 +211,34 @@ const CarrierPartnerships = ({ onNavigateNext }: { onNavigateNext: () => void })
               </div>
             </motion.div>
           )}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mx-auto w-full max-w-5xl rounded-3xl border border-brand-blue/10 bg-white/95 p-10 shadow-md"
+        >
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-brand-blue/70">Product Portfolio</p>
+          <h2 className="mt-4 text-2xl font-semibold text-brand-darkBlue md:text-3xl">
+            Comprehensive Insurance Products We Deliver
+          </h2>
+          <p className="mt-3 text-sm text-brand-gray md:text-base">
+            Cakewalk packages a complete ancillary and core benefits suite, enabling partners to deploy bundled coverage
+            tailored to each SMB segment from one operating system.
+          </p>
+          <div className="mt-6 grid gap-3 sm:grid-cols-2">
+            {productCatalog.map((product) => (
+              <div
+                key={product}
+                className="flex items-center gap-3 rounded-2xl border border-brand-blue/10 bg-brand-lightMint/10 px-4 py-3 text-sm font-medium text-brand-darkBlue/80"
+              >
+                <span className="flex h-2.5 w-2.5 flex-shrink-0 items-center justify-center rounded-full bg-brand-mint" />
+                <span>{product}</span>
+              </div>
+            ))}
+          </div>
         </motion.div>
 
         {/* Compliance & Control card removed */}
