@@ -8,7 +8,7 @@ export const problemCards: ProblemCardData[] = [
   {
     icon: <Shield className="w-8 h-8" />,
     title: "Accessibility",
-    description: "Small business owners lack the time and expertise to navigate insurance markets, leaving their employees underserved.",
+    description: "Carriers and legacy distribution networks were built for enterprise buyers, not 1-20 person teams. The result: no fit-for-SMB delivery rails or products at sustainable unit economics.",
     color: "#00348F",
     delay: "0ms"
   },
