@@ -118,32 +118,7 @@ const approaches: ApproachDefinition[] = [
       "Standardize onboarding, eligibility, and data-sharing to enable compliant, repeatable rollouts across chapters with shared reporting.",
     ],
     revenueNote: "1,200+ SMBs onboarded, 3,000+ policy holders, generating $60K in monthly recurring revenue.",
-    logos: [
-      {
-        id: "logo-a1",
-        name: "Americas Finest Business Owners Alliance",
-        smbs: "310",
-        policyHolders: "650",
-        mrr: "$15K",
-        asset: afboaLogo,
-      },
-      {
-        id: "logo-a2",
-        name: "The Agents Association",
-        smbs: "650",
-        policyHolders: "1500",
-        mrr: "$45K",
-        asset: agentsAssociationLogo,
-      },
-      {
-        id: "logo-a3",
-        name: "Kentucky Farm Bureau",
-        smbs: "150",
-        policyHolders: "300",
-        mrr: "$7K",
-        asset: kyfbLogo,
-      },
-    ],
+    // Logos removed per request; keeping section data focused on pipeline
     pipelineTable: [
       {
         entity: "Pastor Association",
@@ -280,7 +255,7 @@ const GTMDistribution = ({ onNavigateNext }: GTMDistributionProps) => {
                 </p>
               ) : null}
               <div className="mt-4 flex flex-wrap items-center gap-4">
-                {(active.logos && active.logos.length > 0) ? (
+                {active.logos && active.logos.length > 0 ? (
                   active.logos.map((l) => (
                     <div
                       key={l.id}
@@ -303,7 +278,7 @@ const GTMDistribution = ({ onNavigateNext }: GTMDistributionProps) => {
                       </div>
                     </div>
                   ))
-                ) : (
+                ) : active.id === "affinity" ? null : (
                   <div className="rounded-xl border border-dashed border-brand-blue/20 bg-white/60 px-3 py-2 text-sm text-brand-gray">
                     Add partner/customer logos here
                   </div>
