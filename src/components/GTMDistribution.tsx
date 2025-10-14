@@ -17,6 +17,7 @@ interface GTMDistributionProps {
 interface PipelineRow {
   entity: string;
   status: string;
+  description?: string;
 }
 
 interface ApproachMilestone {
@@ -143,11 +144,27 @@ const approaches: ApproachDefinition[] = [
         asset: kyfbLogo,
       },
     ],
-    pipeline: [
-      { stage: "Prospected" },
-      { stage: "MOU" },
-      { stage: "Pilot" },
-      { stage: "Rollout" },
+    pipelineTable: [
+      {
+        entity: "Pastor Association",
+        description: "10,000 pastors across the Pacific Northwest",
+        status: "Signed",
+      },
+      {
+        entity: "Builders Association of the Blue Ridge Mountains",
+        description: "1,200 SMBs in the homebuilding sector representing 10,000 employees",
+        status: "Signed",
+      },
+      {
+        entity: "The Agents Association",
+        description: "1,500 independent insurance agencies representing 6,000 employees",
+        status: "Signed",
+      },
+      {
+        entity: "Americas Finest Business Owners Alliance",
+        description: "1,500 independent SMBs representing 5,000 lives",
+        status: "Signed",
+      },
     ],
     milestones: [
       { label: "Q1–Q2 2025", note: "Launch pilots across 2–3 orgs" },
@@ -303,22 +320,33 @@ const GTMDistribution = ({ onNavigateNext }: GTMDistributionProps) => {
                 <SectionLabel>Pipeline / Funnel</SectionLabel>
                 {active.pipelineTable?.length ? (
                   <div className="mt-3 overflow-hidden rounded-2xl border border-brand-blue/10 bg-white shadow-sm">
-                    <table className="min-w-full divide-y divide-brand-blue/10 text-sm text-brand-gray">
-                      <thead className="bg-brand-blue/5 text-brand-darkBlue">
-                        <tr>
-                          <th className="px-4 py-2 text-left text-xs font-semibold uppercase tracking-[0.2em]">Entity</th>
-                          <th className="px-4 py-2 text-left text-xs font-semibold uppercase tracking-[0.2em]">Status</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {active.pipelineTable.map((row) => (
-                          <tr key={`${row.entity}-${row.status}`} className="odd:bg-white even:bg-brand-lightBlue/5">
-                            <td className="px-4 py-2 font-medium text-brand-darkBlue/80">{row.entity}</td>
-                            <td className="px-4 py-2 text-brand-gray">{row.status}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
+                    {(() => {
+                      const hasDescription = active.pipelineTable?.some((row) => row.description);
+                      return (
+                        <table className="min-w-full divide-y divide-brand-blue/10 text-sm text-brand-gray">
+                          <thead className="bg-brand-blue/5 text-brand-darkBlue">
+                            <tr>
+                              <th className="px-4 py-2 text-left text-xs font-semibold uppercase tracking-[0.2em]">Entity</th>
+                              {hasDescription ? (
+                                <th className="px-4 py-2 text-left text-xs font-semibold uppercase tracking-[0.2em]">Description</th>
+                              ) : null}
+                              <th className="px-4 py-2 text-left text-xs font-semibold uppercase tracking-[0.2em]">Status</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {active.pipelineTable?.map((row) => (
+                              <tr key={`${row.entity}-${row.status}`} className="odd:bg-white even:bg-brand-lightBlue/5">
+                                <td className="px-4 py-2 font-medium text-brand-darkBlue/80">{row.entity}</td>
+                                {hasDescription ? (
+                                  <td className="px-4 py-2 text-brand-gray">{row.description || "—"}</td>
+                                ) : null}
+                                <td className="px-4 py-2 text-brand-gray">{row.status}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      );
+                    })()}
                   </div>
                 ) : (
                   <div className="mt-3 flex flex-wrap gap-2">
