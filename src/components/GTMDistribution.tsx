@@ -116,7 +116,7 @@ const approaches: ApproachDefinition[] = [
       "Return value to the network with revenue share, exclusive pricing, and benchmarking that deepens member engagement and retention.",
       "Standardize onboarding, eligibility, and data-sharing to enable compliant, repeatable rollouts across chapters with shared reporting.",
     ],
-    revenueNote: "3,960 SMBs live, 10,570 policy holders, $605K in monthly recurring revenue across affinity partners.",
+    revenueNote: "1,200+ SMBs onboarded, 3,000+ policy holders, generating $60K in monthly recurring revenue.",
     logos: [
       {
         id: "logo-a1",
