@@ -1,5 +1,6 @@
 
 import CoverScreen from "@/components/CoverScreen";
+import EarlyTraction from "@/components/EarlyTraction";
 import ProblemStatement from "@/components/ProblemStatement";
 import WhyBenefitsMatter from "@/components/WhyBenefitsMatter";
 import BenefitsBarrier from "@/components/benefits-barrier/BenefitsBarrier";
@@ -23,6 +24,7 @@ export type DeckSection = {
 // Section definitions with updated titles
 export const sections: DeckSection[] = [
   { id: "cover", title: "Mission Statement" },
+  { id: "early-traction", title: "Early Traction" },
   { id: "problem", title: "Problem Statement" },
   { id: "why", title: "Why Benefits Matter" },
   { id: "barriers", title: "A Major Structural Problem" },
@@ -42,6 +44,7 @@ export const sections: DeckSection[] = [
 // Mapping of section IDs to their respective components
 export const sectionComponents = {
   "cover": CoverScreen,
+  "early-traction": EarlyTraction,
   "problem": ProblemStatement,
   "why": WhyBenefitsMatter,
   "barriers": BenefitsBarrier,
