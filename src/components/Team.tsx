@@ -55,12 +55,7 @@ const advisors = [
   "Melanie Langsett - Former Head of Compensation & Benefits at Deloitte"
 ];
 
-const executionAdvantage = [
-  "Complementary expertise pairing insurance veterans with product and technology leaders.",
-  "Track record of successful exits and Fortune 500 leadership.",
-  "Deep carrier, broker, and partner relationships to accelerate distribution.",
-  "Unified mission to modernize SMB benefits with technology-first design."
-];
+// Removed Execution Advantage tile per request
 
 const Team = (_props: TeamProps) => {
   return (
@@ -148,20 +143,7 @@ const Team = (_props: TeamProps) => {
             </ul>
           </article>
 
-          <article className="rounded-2xl border border-brand-blue/15 bg-white/95 p-6 shadow-md">
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-brand-blue/70">Execution Advantage</p>
-            <h3 className="mt-2 text-lg font-semibold text-brand-darkBlue">Why This Team Wins</h3>
-            <ul className="mt-4 space-y-3">
-              {executionAdvantage.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-sm text-brand-gray">
-                  <span className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand-mint/30">
-                    <Check className="h-3.5 w-3.5 text-brand-teal" />
-                  </span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </article>
+          {/* Execution Advantage tile removed */}
         </motion.div>
       </div>
 
