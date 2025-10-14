@@ -57,27 +57,27 @@ const EarlyTraction = ({ onNavigateNext }: EarlyTractionProps) => {
             <article className="rounded-2xl border border-brand-blue/15 bg-white/95 p-6 shadow-md">
               <p className="text-xs font-semibold uppercase tracking-[0.25em] text-brand-blue/70">January 2025 Launch</p>
               <h3 className="mt-2 text-lg font-semibold text-brand-darkBlue">Cakewalk Launches</h3>
-              <ul className="mt-4 space-y-3">
+              <ul className="mt-4 space-y-3 list-none">
                 <li className={listStyles}>
-                  <span className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand-mint/20">
+                  <span className="mt-1 shrink-0 flex h-5 w-5 items-center justify-center rounded-full bg-brand-mint/20">
                     <Check className="h-3.5 w-3.5 text-brand-teal" />
                   </span>
                   <span>$750K premium run rate within 90 days of launch</span>
                 </li>
                 <li className={listStyles}>
-                  <span className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand-mint/20">
+                  <span className="mt-1 shrink-0 flex h-5 w-5 items-center justify-center rounded-full bg-brand-mint/20">
                     <Check className="h-3.5 w-3.5 text-brand-teal" />
                   </span>
                   <span>$2M premium run rate within 6 months</span>
                 </li>
                 <li className={listStyles}>
-                  <span className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand-mint/20">
+                  <span className="mt-1 shrink-0 flex h-5 w-5 items-center justify-center rounded-full bg-brand-mint/20">
                     <Check className="h-3.5 w-3.5 text-brand-teal" />
                   </span>
                   <span>Five-person team built MVP platform and initial GTM distribution</span>
                 </li>
                 <li className={listStyles}>
-                  <span className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand-mint/20">
+                  <span className="mt-1 shrink-0 flex h-5 w-5 items-center justify-center rounded-full bg-brand-mint/20">
                     <Check className="h-3.5 w-3.5 text-brand-teal" />
                   </span>
                   <span>Zero dollars spent on customer acquisition</span>
@@ -89,27 +89,27 @@ const EarlyTraction = ({ onNavigateNext }: EarlyTractionProps) => {
             <article className="rounded-2xl border border-brand-blue/15 bg-white/95 p-6 shadow-md">
               <p className="text-xs font-semibold uppercase tracking-[0.25em] text-brand-blue/70">October 2025 Snapshot</p>
               <h3 className="mt-2 text-lg font-semibold text-brand-darkBlue">Cakewalk October 2025</h3>
-              <ul className="mt-4 space-y-3">
+              <ul className="mt-4 space-y-3 list-none">
                 <li className={listStyles}>
-                  <span className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand-mint/20">
+                  <span className="mt-1 shrink-0 flex h-5 w-5 items-center justify-center rounded-full bg-brand-mint/20">
                     <Check className="h-3.5 w-3.5 text-brand-teal" />
                   </span>
                   <span>Team of 13 across product, engineering, and operations</span>
                 </li>
                 <li className={listStyles}>
-                  <span className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand-mint/20">
+                  <span className="mt-1 shrink-0 flex h-5 w-5 items-center justify-center rounded-full bg-brand-mint/20">
                     <Check className="h-3.5 w-3.5 text-brand-teal" />
                   </span>
                   <span>1,200 SMBs served</span>
                 </li>
                 <li className={listStyles}>
-                  <span className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand-mint/20">
+                  <span className="mt-1 shrink-0 flex h-5 w-5 items-center justify-center rounded-full bg-brand-mint/20">
                     <Check className="h-3.5 w-3.5 text-brand-teal" />
                   </span>
                   <span>3,000+ employees enrolled</span>
                 </li>
                 <li className={listStyles}>
-                  <span className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand-mint/20">
+                  <span className="mt-1 shrink-0 flex h-5 w-5 items-center justify-center rounded-full bg-brand-mint/20">
                     <Check className="h-3.5 w-3.5 text-brand-teal" />
                   </span>
                   <span>$700K ARR</span>
@@ -144,4 +144,3 @@ const EarlyTraction = ({ onNavigateNext }: EarlyTractionProps) => {
 };
 
 export default EarlyTraction;
-
