@@ -69,13 +69,15 @@ const WrapUp = ({ onNavigateNext }: WrapUpProps) => {
           transition={{ staggerChildren: 0.12 }}
           className="grid gap-6 md:grid-cols-2"
         >
-          {keyMessages.map((message) => {
+          {keyMessages.map((message, index) => {
             const Icon = message.icon;
             return (
               <motion.article
                 key={message.title}
                 variants={cardVariants}
-                className="rounded-2xl border border-brand-blue/15 bg-white/95 p-6 shadow-md transition hover:-translate-y-1 hover:shadow-lg"
+                className={`rounded-2xl border border-brand-blue/15 bg-white/95 p-6 shadow-md transition hover:-translate-y-1 hover:shadow-lg ${
+                  index === keyMessages.length - 1 ? "md:col-span-2 md:max-w-lg md:mx-auto" : ""
+                }`}
               >
                 <div className="flex items-center gap-4">
                   <span className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-blue/10 text-brand-blue">
