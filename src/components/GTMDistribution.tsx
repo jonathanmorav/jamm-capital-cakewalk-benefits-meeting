@@ -249,7 +249,7 @@ const GTMDistribution = ({ onNavigateNext }: GTMDistributionProps) => {
             ) : null}
 
             {/* Revenue & Logos */}
-            {active.id !== "embedded" ? (
+            {active.id !== "embedded" && active.id !== "reseller" ? (
               <div className="mt-6">
                 <SectionLabel>{getRevenueLabel(active.id)}</SectionLabel>
                 {active.revenueNote ? (
