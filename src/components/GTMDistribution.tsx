@@ -149,10 +149,13 @@ const approaches: ApproachDefinition[] = [
     icon: Handshake,
     badgeClass: "bg-soft-purple text-brand-darkBlue",
     tileClass: "bg-soft-purple/80 border border-soft-purple/60 text-brand-darkBlue",
-    overview: "Embed within payroll/HRIS/fintech platforms and sell direct to their base.",
+    overview:
+      "Technology driven embedded insurance / benefits offering within existing Pay, HRIS, Fintech, or other complimentary platforms that meet SMB users at the point of sale.",
     strategy: [
-      "Add strategy for Embedded (integration, revenue share, SLAs)",
-      "Define co-selling motion and support model",
+      "Target API-first payroll, HRIS, and vertical SaaS partners where benefits decisions occur during pay or onboarding workflows.",
+      "Co-develop embedded quoting, underwriting, and enrollment modules that surface the right coverage using shared platform data.",
+      "Establish revenue-share, compliance, and servicing playbooks that motivate partner reps without diluting Cakewalk unit economics.",
+      "Instrument joint analytics, billing, and support processes so SMBs receive one-touch service while upsell triggers are flagged automatically.",
     ],
     pipelineTable: [
       {
