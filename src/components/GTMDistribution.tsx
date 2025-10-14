@@ -154,22 +154,27 @@ const approaches: ApproachDefinition[] = [
       "Add strategy for Embedded (integration, revenue share, SLAs)",
       "Define co-selling motion and support model",
     ],
-    revenueNote: "Insert embedded/direct revenue and partner contribution.",
-    logos: [
-      { id: "logo-e1", name: "Platform 1" },
-      { id: "logo-e2", name: "Platform 2" },
+    pipelineTable: [
+      {
+        entity: "HiQOR",
+        description:
+          "Health data company serving 3,000,000 users. Cakewalk will use their health data to personalize embedded insurance offerings for both individual and group benefit products with an emphasis on Life Insurance",
+        status: "Signed, Launching Q1 2026",
+      },
+      {
+        entity: "Cast & Crew",
+        description:
+          "Entertainment industry payroll company serving over 500,000 independent / SMB employees across the entertainment industry",
+        status: "Qualified",
+      },
+      {
+        entity: "Spot On",
+        description:
+          "Point of Sale system provider to 60,000 SMBs primarily in the hospitality and restaurant industry",
+        status: "Qualified",
+      },
     ],
-    pipeline: [
-      { stage: "Targets" },
-      { stage: "Tech Review" },
-      { stage: "Build" },
-      { stage: "Live" },
-    ],
-    milestones: [
-      { label: "Q1–Q2 2025", note: "Sign 1–2 lighthouse partners" },
-      { label: "Q3–Q4 2025", note: "Launch embedded SDK v1" },
-      { label: "2026", note: "Expand API + joint SKUs" },
-    ],
+    // Milestones intentionally omitted to remove "Next 24 Months" section for embedded partnerships
   },
 ];
 
@@ -241,49 +246,51 @@ const GTMDistribution = ({ onNavigateNext }: GTMDistributionProps) => {
             ) : null}
 
             {/* Revenue & Logos */}
-            <div className="mt-6">
-              <SectionLabel>{getRevenueLabel(active.id)}</SectionLabel>
-              {active.revenueNote ? (
-                <p className="mt-3 text-sm text-brand-gray md:text-base">{active.revenueNote}</p>
-              ) : active.id !== "reseller" ? (
-                <p className="mt-3 text-sm text-brand-gray md:text-base">
-                  Add revenue summary, contribution %, and trends.
-                </p>
-              ) : null}
-              <div className="mt-4 flex flex-wrap items-center gap-4">
-                {active.logos && active.logos.length > 0 ? (
-                  active.logos.map((l) => (
-                    <div
-                      key={l.id}
-                      className="flex items-center gap-3 rounded-xl border border-brand-blue/10 bg-white px-3 py-2 shadow-sm"
-                    >
-                      {l.asset ? (
-                        <img src={l.asset} alt={`${l.name} logo`} className="h-10 w-auto" />
-                      ) : (
-                        <PartnerLogo className="h-8" />
-                      )}
-                      <div className="flex flex-col">
-                        <span className="text-sm font-medium text-brand-darkBlue/80">{l.name}</span>
-                        {(l.smbs || l.policyHolders || l.mrr) ? (
-                          <div className="mt-1 flex flex-wrap gap-3 text-xs text-brand-gray">
-                            {l.smbs ? <span>{l.smbs} SMBs</span> : null}
-                            {l.policyHolders ? <span>{l.policyHolders} Policy Holders</span> : null}
-                            {l.mrr ? <span>{l.mrr} MRR</span> : null}
-                          </div>
-                        ) : null}
+            {active.id !== "embedded" ? (
+              <div className="mt-6">
+                <SectionLabel>{getRevenueLabel(active.id)}</SectionLabel>
+                {active.revenueNote ? (
+                  <p className="mt-3 text-sm text-brand-gray md:text-base">{active.revenueNote}</p>
+                ) : active.id !== "reseller" ? (
+                  <p className="mt-3 text-sm text-brand-gray md:text-base">
+                    Add revenue summary, contribution %, and trends.
+                  </p>
+                ) : null}
+                <div className="mt-4 flex flex-wrap items-center gap-4">
+                  {active.logos && active.logos.length > 0 ? (
+                    active.logos.map((l) => (
+                      <div
+                        key={l.id}
+                        className="flex items-center gap-3 rounded-xl border border-brand-blue/10 bg-white px-3 py-2 shadow-sm"
+                      >
+                        {l.asset ? (
+                          <img src={l.asset} alt={`${l.name} logo`} className="h-10 w-auto" />
+                        ) : (
+                          <PartnerLogo className="h-8" />
+                        )}
+                        <div className="flex flex-col">
+                          <span className="text-sm font-medium text-brand-darkBlue/80">{l.name}</span>
+                          {(l.smbs || l.policyHolders || l.mrr) ? (
+                            <div className="mt-1 flex flex-wrap gap-3 text-xs text-brand-gray">
+                              {l.smbs ? <span>{l.smbs} SMBs</span> : null}
+                              {l.policyHolders ? <span>{l.policyHolders} Policy Holders</span> : null}
+                              {l.mrr ? <span>{l.mrr} MRR</span> : null}
+                            </div>
+                          ) : null}
+                        </div>
                       </div>
+                    ))
+                  ) : active.id === "affinity" ? null : (
+                    <div className="rounded-xl border border-dashed border-brand-blue/20 bg-white/60 px-3 py-2 text-sm text-brand-gray">
+                      Add partner/customer logos here
                     </div>
-                  ))
-                ) : active.id === "affinity" ? null : (
-                  <div className="rounded-xl border border-dashed border-brand-blue/20 bg-white/60 px-3 py-2 text-sm text-brand-gray">
-                    Add partner/customer logos here
-                  </div>
-                )}
+                  )}
+                </div>
+                {active.footnote ? (
+                  <p className="mt-3 text-xs text-brand-blue/70">{active.footnote}</p>
+                ) : null}
               </div>
-              {active.footnote ? (
-                <p className="mt-3 text-xs text-brand-blue/70">{active.footnote}</p>
-              ) : null}
-            </div>
+            ) : null}
 
             {/* Pipeline */}
             {(active.pipelineTable?.length || active.pipeline?.length) ? (
