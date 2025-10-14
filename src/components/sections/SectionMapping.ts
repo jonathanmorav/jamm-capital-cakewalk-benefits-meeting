@@ -16,6 +16,7 @@ import UnitEconomics from "@/components/UnitEconomics";
 import UseOfFunds from "@/components/UseOfFunds";
 import Team from "@/components/Team";
 import WrapUp from "@/components/WrapUp";
+import Contact from "@/components/Contact";
 
 export type DeckSection = {
   id: string;
@@ -41,6 +42,7 @@ export const sections: DeckSection[] = [
   { id: "use-of-funds", title: "Use of Funds" },
   { id: "team", title: "The Team" },
   { id: "wrap-up", title: "Why Cakewalk Wins" },
+  { id: "contact", title: "Contact" },
 ];
 
 // Mapping of section IDs to their respective components
@@ -62,4 +64,5 @@ export const sectionComponents = {
   "use-of-funds": UseOfFunds,
   "team": Team,
   "wrap-up": WrapUp,
+  "contact": Contact,
 };
