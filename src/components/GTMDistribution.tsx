@@ -14,6 +14,17 @@ interface GTMDistributionProps {
   onNavigateNext: () => void;
 }
 
+interface PipelineRow {
+  entity: string;
+  status: string;
+}
+
+interface ApproachMilestone {
+  label: string;
+  note?: string;
+  notes?: string[];
+}
+
 interface ApproachDefinition {
   id: string;
   title: string;
@@ -32,7 +43,8 @@ interface ApproachDefinition {
     asset?: string;
   }[]; // Placeholder logo list
   pipeline?: { stage: string; note?: string }[]; // Placeholder stages
-  milestones?: { label: string; note?: string }[]; // Placeholder 24-mo milestones
+  pipelineTable?: PipelineRow[];
+  milestones?: ApproachMilestone[]; // Placeholder 24-mo milestones
   footnote?: string;
 }
 
@@ -50,7 +62,6 @@ const approaches: ApproachDefinition[] = [
       "Bundled product playbooks and pricing guidance lift attach rates while protecting compliance guardrails.",
       "Next-day commission payments and cash-flow tracking inside the OS reinforce loyalty and selling velocity.",
     ],
-    revenueNote: "Currently Cakewalk is launching its POC with a control group of 20+ re-sellers.",
     logos: [
       { id: "logo-r1", name: "Kentucky Farm Bureau (KYFB)", asset: kyfbLogo },
       { id: "logo-r2", name: "Michigan Farm Bureau", asset: michiganFarmBureauLogo },
@@ -58,16 +69,35 @@ const approaches: ApproachDefinition[] = [
       { id: "logo-r4", name: "Alera Group" },
       { id: "logo-r5", name: "American Family Insurance" },
     ],
-    pipeline: [
-      { stage: "Leads" },
-      { stage: "Qualified" },
-      { stage: "Committed" },
-      { stage: "Live" },
+    pipelineTable: [
+      { entity: "American Family Insurance", status: "Committed" },
+      { entity: "Acrisure", status: "Qualified" },
+      { entity: "Michigan Farm Bureau", status: "Qualified" },
+      { entity: "Kentucky Farm Bureau", status: "Committed" },
     ],
     milestones: [
-      { label: "Q1–Q2 2025", note: "Sign X tier-1 resellers" },
-      { label: "Q3–Q4 2025", note: "Enablement + co-marketing playbooks" },
-      { label: "2026", note: "Scale through expanding partner SKUs" },
+      { label: "Q4 2025", notes: ["Onboard first 25 independent re-selling agents"] },
+      {
+        label: "Q1 2026",
+        notes: [
+          "Onboard first institutional re-selling partner",
+          "Grow independent re-selling agents active to 250",
+        ],
+      },
+      {
+        label: "Q3 2026",
+        notes: [
+          "Grow to 3 institutional re-selling partners",
+          "Grow independent re-selling agents active to 1,000",
+        ],
+      },
+      {
+        label: "Q1 2027",
+        notes: [
+          "Grow to 5 institutional re-selling partners",
+          "Grow independent re-selling agents active to 2,000",
+        ],
+      },
     ],
     footnote:
       "* First re-selling persona centers on P&C agents already serving SMBs—Cakewalk extends their book with embedded benefits and rapid commissions.",
@@ -163,6 +193,12 @@ const GTMDistribution = ({ onNavigateNext }: GTMDistributionProps) => {
     [activeId]
   );
 
+  const getRevenueLabel = (id: string) => {
+    if (id === "affinity") return "Live Affinity Groups";
+    if (id === "reseller") return "Reseller Partners";
+    return "Current Revenue Generated";
+  };
+
   return (
     <section className="relative min-h-screen bg-white py-16 md:py-24">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-4 md:px-6">
@@ -218,12 +254,14 @@ const GTMDistribution = ({ onNavigateNext }: GTMDistributionProps) => {
 
             {/* Revenue & Logos */}
             <div className="mt-6">
-              <SectionLabel>
-                {active.id === "affinity" ? "Live Affinity Groups" : "Current Revenue Generated"}
-              </SectionLabel>
-              <p className="mt-3 text-sm text-brand-gray md:text-base">
-                {active.revenueNote || "Add revenue summary, contribution %, and trends."}
-              </p>
+              <SectionLabel>{getRevenueLabel(active.id)}</SectionLabel>
+              {active.revenueNote ? (
+                <p className="mt-3 text-sm text-brand-gray md:text-base">{active.revenueNote}</p>
+              ) : active.id !== "reseller" ? (
+                <p className="mt-3 text-sm text-brand-gray md:text-base">
+                  Add revenue summary, contribution %, and trends.
+                </p>
+              ) : null}
               <div className="mt-4 flex flex-wrap items-center gap-4">
                 {(active.logos && active.logos.length > 0) ? (
                   active.logos.map((l) => (
@@ -260,19 +298,40 @@ const GTMDistribution = ({ onNavigateNext }: GTMDistributionProps) => {
             </div>
 
             {/* Pipeline */}
-            {active.pipeline?.length ? (
+            {(active.pipelineTable?.length || active.pipeline?.length) ? (
               <div className="mt-6">
                 <SectionLabel>Pipeline / Funnel</SectionLabel>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {active.pipeline.map((st) => (
-                    <span
-                      key={st.stage}
-                      className="rounded-full border border-brand-blue/15 bg-brand-blue/5 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-darkBlue"
-                    >
-                      {st.stage}
-                    </span>
-                  ))}
-                </div>
+                {active.pipelineTable?.length ? (
+                  <div className="mt-3 overflow-hidden rounded-2xl border border-brand-blue/10 bg-white shadow-sm">
+                    <table className="min-w-full divide-y divide-brand-blue/10 text-sm text-brand-gray">
+                      <thead className="bg-brand-blue/5 text-brand-darkBlue">
+                        <tr>
+                          <th className="px-4 py-2 text-left text-xs font-semibold uppercase tracking-[0.2em]">Entity</th>
+                          <th className="px-4 py-2 text-left text-xs font-semibold uppercase tracking-[0.2em]">Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {active.pipelineTable.map((row) => (
+                          <tr key={`${row.entity}-${row.status}`} className="odd:bg-white even:bg-brand-lightBlue/5">
+                            <td className="px-4 py-2 font-medium text-brand-darkBlue/80">{row.entity}</td>
+                            <td className="px-4 py-2 text-brand-gray">{row.status}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                ) : (
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {active.pipeline?.map((st) => (
+                      <span
+                        key={st.stage}
+                        className="rounded-full border border-brand-blue/15 bg-brand-blue/5 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-darkBlue"
+                      >
+                        {st.stage}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
             ) : null}
 
@@ -284,7 +343,18 @@ const GTMDistribution = ({ onNavigateNext }: GTMDistributionProps) => {
                   {active.milestones.map((m) => (
                     <div key={m.label} className="rounded-2xl border border-brand-blue/10 bg-white p-3 shadow-sm">
                       <p className="text-xs font-semibold uppercase tracking-wide text-brand-blue/70">{m.label}</p>
-                      <p className="mt-1 text-sm text-brand-gray">{m.note || "Add milestone"}</p>
+                      {m.notes && m.notes.length ? (
+                        <ul className="mt-2 space-y-1 text-sm text-brand-gray">
+                          {m.notes.map((note) => (
+                            <li key={note} className="flex items-start gap-2">
+                              <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-brand-mint" />
+                              <span>{note}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <p className="mt-1 text-sm text-brand-gray">{m.note || "Add milestone"}</p>
+                      )}
                     </div>
                   ))}
                 </div>
