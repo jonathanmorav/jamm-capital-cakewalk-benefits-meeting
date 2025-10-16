@@ -21,7 +21,7 @@ const leadership = [
     name: "Jonathan Morav",
     title: "Chief Operating Officer",
     highlights: [
-      "Scaled operations, sales, and strategy at Fabric.",
+      "VP, Operations, Product & Strategy, and Sales at Fabric.",
       "Process optimization specialist across complex workflows.",
       "Cross-functional leader delivering across operations, strategy, and GTM."
     ]
@@ -31,7 +31,7 @@ const leadership = [
     title: "Chief Revenue Officer",
     highlights: [
       "Former President of Heritage One, scaling mid-market benefits distribution.",
-      "Directed growth and partnerships at MCG Group.",
+      "Directed growth and partnerships at MGC Group.",
       "20+ years building carrier and broker relationships."
     ]
   },
@@ -39,7 +39,7 @@ const leadership = [
     name: "Niv Ben-Dor",
     title: "Chief Product Officer",
     highlights: [
-      "Led product strategy at Cover Whale, a high-growth insurtech.",
+      "VP, Products at Cover Whale, a high-growth insurtech.",
       "Head of Product & Monetization at Content IQ (exit to Perion).",
       "Product-led growth expert focused on intuitive experiences."
     ]
@@ -50,7 +50,7 @@ const advisors = [
   "Kevin McCarthy — Former CEO, UNUM USA",
   "Bill Deehan — Special Advisor to the CEO of AFLAC",
   "Adam Pannell — Regional President; Former EVP, Mergers & Acquisitions at OneDigital",
-  "Keith Bexell - Former Chief Underwriting Officer, Chief Operating Officer at MetLife",
+  "Keith Bexell - Former Chief Underwriting Officer, Chief Operating Officer at Prudential",
   "Sina Chehrazi - Founder and CEO at Nayya Health",
   "Melanie Langsett - Former Head of Compensation & Benefits at Deloitte"
 ];
