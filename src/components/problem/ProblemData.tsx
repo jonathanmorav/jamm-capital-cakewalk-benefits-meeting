@@ -22,7 +22,7 @@ export const problemCards: ProblemCardData[] = [
   {
     icon: <PieChart className="w-8 h-8" />,
     title: "Complexity",
-    description: "Small businesses struggle with the complexity of traditional employee benefits solutions, facing mountains of paperwork and confusing options.",
+    description: "Small businesses remain challenged by offerings that are designed for larger employers. Intermediaries and carriers don't come down to small business resource levels, further compounding the problem.",
     color: "#15CB94",
     delay: "200ms"
   }
