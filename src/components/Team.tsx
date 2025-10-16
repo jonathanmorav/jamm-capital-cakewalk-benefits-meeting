@@ -13,8 +13,8 @@ const leadership = [
     title: "Chief Executive Officer",
     highlights: [
       "Former Chief Insurance Officer at Salty (acquired by CDK Global).",
-      "Led underwriting and product teams at Prudential.",
-      "Built and exited IBX to Alliant Insurance Services."
+      "ex-Chief Underwriting Officer at Prudential",
+      "President at IBX, exited to Alliance Insurance Services"
     ]
   },
   {
