@@ -138,7 +138,7 @@ const SolutionOverview = ({
                   <SolutionFeature 
                     icon={<Zap className="h-6 w-6" />} 
                     title="Real-Time Underwriting & Smart Guidance"
-                    subcopy="Streams employer and employee data through multi-carrier pricing in seconds, then recommends the right mix of medical, ancillary, and financial protection so every team walks away with coverage tailored to its needs."
+                    subcopy="Streams employer and employee data through our proprietary underwriting engine in seconds, then recommends the right mix of medical, ancillary, and financial protection so every team walks away with coverage tailored to its needs."
                   />
                   <SolutionFeature 
                     icon={<Users className="h-6 w-6" />} 
