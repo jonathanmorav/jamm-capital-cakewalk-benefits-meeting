@@ -54,15 +54,15 @@ const KeyPerformanceTable = () => {
             {/* ARR derived from Lives Served * Revenue per Life (Monthly) * 12 */}
             <TableRow className="bg-soft-blue/20 hover:bg-soft-blue/30">
               <TableCell className="font-semibold text-brand-darkBlue">ARR</TableCell>
-              <TableCell className="text-right font-semibold tabular-nums text-brand-darkBlue">$0.8M</TableCell>
-              <TableCell className="text-right font-semibold tabular-nums text-brand-darkBlue">$4.3M</TableCell>
-              <TableCell className="text-right font-semibold tabular-nums text-brand-darkBlue">$8.6M</TableCell>
+              <TableCell className="text-right font-semibold tabular-nums text-brand-darkBlue">$1.3M</TableCell>
+              <TableCell className="text-right font-semibold tabular-nums text-brand-darkBlue">$7.7M</TableCell>
+              <TableCell className="text-right font-semibold tabular-nums text-brand-darkBlue">$16.0M</TableCell>
             </TableRow>
             <TableRow className="hover:bg-brand-lightMint/10">
               <TableCell className="font-medium text-brand-darkBlue">Revenue per Life (Monthly)</TableCell>
-              <TableCell className="text-right tabular-nums text-brand-darkBlue/90">$18</TableCell>
-              <TableCell className="text-right tabular-nums text-brand-darkBlue/90">$18</TableCell>
-              <TableCell className="text-right tabular-nums text-brand-darkBlue/90">$18</TableCell>
+              <TableCell className="text-right tabular-nums text-brand-darkBlue/90">$31</TableCell>
+              <TableCell className="text-right tabular-nums text-brand-darkBlue/90">$32</TableCell>
+              <TableCell className="text-right tabular-nums text-brand-darkBlue/90">$33</TableCell>
             </TableRow>
             <TableRow className="hover:bg-brand-lightMint/10">
               <TableCell className="font-medium text-brand-darkBlue">Margin per Life (Monthly)</TableCell>
