@@ -189,6 +189,9 @@ const TAMOpportunity = ({ onNavigateNext }: TAMOpportunityProps) => {
                 </div>
               ))}
             </div>
+            <p className="mt-2 text-xs text-brand-gray/80 italic">
+              Projections exclude health plan revenue which can potentially double the model.
+            </p>
           </motion.article>
         </div>
       </div>
