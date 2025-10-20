@@ -47,7 +47,7 @@ const opportunityStats = [
   },
   {
     label: "Lifetime value per life",
-    value: "~$1.1K",
+    value: "~$2.1K",
     detail: "$25 × 12 months × 7+ year average persistency",
   },
   {
