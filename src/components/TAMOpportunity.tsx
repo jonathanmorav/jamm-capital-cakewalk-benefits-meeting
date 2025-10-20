@@ -29,7 +29,7 @@ const tamMetrics = [
     id: "persistency",
     label: "Policy persistency",
     value: "95%",
-    detail: "Average policy remains in force four years on Cakewalk",
+    detail: "Average policy remains in force 7+ years on Cakewalk",
   },
 ];
 
@@ -48,7 +48,7 @@ const opportunityStats = [
   {
     label: "Lifetime value per life",
     value: "~$1.1K",
-    detail: "$25 × 12 months × 4-year average persistency",
+    detail: "$25 × 12 months × 7+ year average persistency",
   },
   {
     label: "Workforce represented",
