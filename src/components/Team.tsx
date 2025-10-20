@@ -47,7 +47,7 @@ const leadership = [
 ];
 
 const advisors = [
-  "Kevin McCarthy — Former CEO, UNUM USA",
+  "Kevin McCarthy — Former CEO, UNUM USA; Ex-Chairman of Salty",
   "Bill Deehan — Special Advisor to the CEO of AFLAC",
   "Adam Pannell — Regional President; Former EVP, Mergers & Acquisitions at OneDigital",
   "Keith Bexell - Former Chief Underwriting Officer, Chief Operating Officer at Prudential",
