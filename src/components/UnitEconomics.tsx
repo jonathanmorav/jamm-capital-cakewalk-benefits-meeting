@@ -2,6 +2,7 @@
 import React from "react";
 import UnitEconomicsHeader from "./unit-economics/UnitEconomicsHeader";
 import KeyPerformanceTable from "./unit-economics/KeyPerformanceTable";
+import SensitivityAnalysis from "./unit-economics/SensitivityAnalysis";
 import SectionFooter from "./use-of-funds/SectionFooter";
 import BottomCornerLogo from "./BottomCornerLogo";
 
@@ -18,6 +19,9 @@ const UnitEconomics = ({ onNavigateNext }: UnitEconomicsProps) => {
 
         {/* Key Performance Indicators */}
         <KeyPerformanceTable />
+
+        {/* Sensitivity Analysis */}
+        <SensitivityAnalysis />
 
         {/* Four theme cards replacing detailed modules */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mb-16">
