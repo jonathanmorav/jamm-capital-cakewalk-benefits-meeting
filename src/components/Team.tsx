@@ -48,7 +48,6 @@ const leadership = [
 
 const advisors = [
   "Kevin McCarthy — Former CEO, UNUM USA; Ex-Chairman of Salty",
-  "Bill Deehan — Executive Consultant @ AFLAC; Ex VP, Sales @ Colonial; Ex Managing Director - South Region @ UNUM",
   "Adam Pannell — Regional President; Former EVP, Mergers & Acquisitions at OneDigital",
   "Keith Bexell - Former Chief Underwriting Officer, Chief Operating Officer at Prudential",
   "Sina Chehrazi - Founder and CEO at Nayya Health",
