@@ -6,8 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 
-const NET_MARGIN = 0.7;
-const HEALTH_PLAN_REVENUE_PER_EMPLOYEE = 40;
+const HEALTH_PLAN_REVENUE_PER_EMPLOYEE = 15;
 
 const baseAssumptions = {
   avgEmployeesPerSmb: 5,
@@ -17,9 +16,36 @@ const baseAssumptions = {
 };
 
 const periods = [
-  { key: "ytd", label: "YTD", smbs: 1200 },
-  { key: "2026", label: "2026", smbs: 5000 },
-  { key: "2027", label: "2027", smbs: 10000 },
+  {
+    key: "ytd",
+    label: "YTD",
+    smbs: 1200,
+    baseAvgEmployees: 3,
+    baseLives: 3600,
+    baseGrossAnnualizedPremium: 3000000,
+    baseArrBase: 800000,
+    baseNetMargin: null,
+  },
+  {
+    key: "2026",
+    label: "2026",
+    smbs: 3500,
+    baseAvgEmployees: 5,
+    baseLives: 17500,
+    baseGrossAnnualizedPremium: 26300000,
+    baseArrBase: 6600000,
+    baseNetMargin: 0.45,
+  },
+  {
+    key: "2027",
+    label: "2027",
+    smbs: 10000,
+    baseAvgEmployees: 4,
+    baseLives: 40000,
+    baseGrossAnnualizedPremium: 60000000,
+    baseArrBase: 15000000,
+    baseNetMargin: 0.7,
+  },
 ];
 
 const currencyCompactFormatter = new Intl.NumberFormat("en-US", {
@@ -69,40 +95,57 @@ const SensitivityAnalysis = () => {
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const value = Number(event.target.value);
       if (Number.isNaN(value)) return;
-      const clamped = Math.min(Math.max(value, 0), 100);
+      const maxPercent = key === "healthAdoptionRate" ? 5 : 100;
+      const clamped = Math.min(Math.max(value, 0), maxPercent);
       const normalized = clamped / 100;
       setAssumptions((prev) => ({ ...prev, [key]: normalized }));
     };
 
   const metrics = React.useMemo(() => {
-    const baseRevenuePerLife = assumptions.premiumPerEmployee * assumptions.commissionRate;
+    const basePremiumPerEmployee = baseAssumptions.premiumPerEmployee;
+    const baseCommissionRate = baseAssumptions.commissionRate;
+    const baseRevenuePerLifeBaseline = basePremiumPerEmployee * baseCommissionRate;
+
+    const avgEmployeesMultiplier =
+      baseAssumptions.avgEmployeesPerSmb === 0 ? 0 : assumptions.avgEmployeesPerSmb / baseAssumptions.avgEmployeesPerSmb;
+    const revenuePerLife = assumptions.premiumPerEmployee * assumptions.commissionRate;
     const healthRevenuePerLife = assumptions.healthAdoptionRate * HEALTH_PLAN_REVENUE_PER_EMPLOYEE;
-    const totalRevenuePerLife = baseRevenuePerLife + healthRevenuePerLife;
-    const baseArrPerLife = baseRevenuePerLife * 12;
-    const healthArrPerLife = healthRevenuePerLife * 12;
-    const marginPerLife = totalRevenuePerLife * NET_MARGIN;
+    const totalRevenuePerLife = revenuePerLife + healthRevenuePerLife;
 
     return {
-      baseRevenuePerLife,
+      revenuePerLife,
       healthRevenuePerLife,
       totalRevenuePerLife,
-      marginPerLife,
       rows: periods.map((period) => {
-        const lives = period.smbs * assumptions.avgEmployeesPerSmb;
-        const grossAnnualizedPremium = lives * assumptions.premiumPerEmployee * 12;
-        const arrBase = baseArrPerLife * lives;
-        const arrHealth = healthArrPerLife * lives;
+        const basePremiumScalar =
+          period.baseLives === 0 || basePremiumPerEmployee === 0
+            ? 0
+            : period.baseGrossAnnualizedPremium / (basePremiumPerEmployee * period.baseLives * 12);
+        const baseRevenueScalar =
+          period.baseLives === 0 || baseRevenuePerLifeBaseline === 0
+            ? 0
+            : period.baseArrBase / (baseRevenuePerLifeBaseline * period.baseLives * 12);
+        const adjustedAvgEmployees = period.baseAvgEmployees * avgEmployeesMultiplier;
+        const lives = adjustedAvgEmployees * period.smbs;
+        const grossAnnualizedPremium = basePremiumScalar * assumptions.premiumPerEmployee * lives * 12;
+        const arrBase = baseRevenueScalar * revenuePerLife * lives * 12;
+        const arrHealth = healthRevenuePerLife * lives * 12;
         const arrTotal = arrBase + arrHealth;
+        const netMargin = period.baseNetMargin;
+        const marginPerLife = netMargin == null ? null : totalRevenuePerLife * netMargin;
 
         return {
           key: period.key,
           label: period.label,
           smbs: period.smbs,
+          avgEmployeesPerSmb: adjustedAvgEmployees,
           lives,
           grossAnnualizedPremium,
           arrBase,
           arrHealth,
           arrTotal,
+          netMargin,
+          marginPerLife,
         };
       }),
     };
@@ -134,80 +177,86 @@ const SensitivityAnalysis = () => {
         <h3 className="mt-2 text-2xl font-bold text-brand-darkBlue md:text-3xl">Unit Economics Sensitivity</h3>
         <p className="mt-4 text-sm text-brand-gray md:text-base">
           Adjust the core assumptions to see how the model responds. Reset to Cakewalk&apos;s base case at any time. The
-          table calls out the incremental lift that health plan attachment creates on ARR.
+          table highlights the measured lift from a capped health plan attachment scenario layered on top of the base
+          benefits business.
         </p>
       </header>
 
       <div className="mx-auto mb-6 w-full max-w-4xl rounded-2xl border border-brand-lightMint/40 bg-brand-lightMint/20 p-4 text-sm text-brand-darkBlue md:text-base">
-        <p className="font-semibold text-brand-darkBlue">Health Plan Attachment Drives Step-Change ARR</p>
+        <p className="font-semibold text-brand-darkBlue">Disciplined Health Attachment Upside</p>
         <p className="mt-2 text-brand-gray">
-          Every incremental 1% of employees attaching a health plan adds ~${(HEALTH_PLAN_REVENUE_PER_EMPLOYEE * 12).toLocaleString()} ARR per 1,000 enrolled lives. Use the health attach control to visualize how even modest adoption layers meaningful revenue and margin on top of the base benefits business.
+          Each 1% attach lifts ARR by roughly ${(HEALTH_PLAN_REVENUE_PER_EMPLOYEE * 12 * 10).toLocaleString()} per 1,000 lives on a conservative ${HEALTH_PLAN_REVENUE_PER_EMPLOYEE} per employee assumption; controls cap at 5% to reflect near-term runway.
+        </p>
+        <p className="mt-2 text-brand-gray">
+          Sub-25 life groups juggle ACA 50% minimum contributions even on stripped-down plans, so Cakewalk choreographs compliant contribution strategy, plan design, and administration while owners stay focused on the core business.
         </p>
       </div>
 
-      <div className="grid gap-4 rounded-3xl border border-brand-blue/15 bg-white/95 p-6 shadow-md md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-6 md:p-8">
-        <div className="grid gap-4 md:grid-cols-2 md:gap-6">
-          <div className="space-y-2">
-            <Label htmlFor="assumption-avg-employees">Avg Employees per SMB</Label>
-            <Input
-              id="assumption-avg-employees"
-              type="number"
-              min={1}
-              step={0.5}
-              value={assumptions.avgEmployeesPerSmb}
-              onChange={handleNumberChange("avgEmployeesPerSmb")}
-              className="text-sm"
-            />
+      <div className="rounded-3xl border border-brand-blue/15 bg-white/95 p-6 shadow-md md:p-8">
+        <div className="flex flex-col gap-4 md:gap-6">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="space-y-2">
+              <Label htmlFor="assumption-avg-employees">Avg Employees per SMB</Label>
+              <Input
+                id="assumption-avg-employees"
+                type="number"
+                min={1}
+                step={0.5}
+                value={assumptions.avgEmployeesPerSmb}
+                onChange={handleNumberChange("avgEmployeesPerSmb")}
+                className="text-sm"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="assumption-premium">Premium per Employee / Month ($)</Label>
+              <Input
+                id="assumption-premium"
+                type="number"
+                min={0}
+                step={1}
+                value={assumptions.premiumPerEmployee}
+                onChange={handleNumberChange("premiumPerEmployee")}
+                className="text-sm"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="assumption-commission">Commission Rate (%)</Label>
+              <Input
+                id="assumption-commission"
+                type="number"
+                min={0}
+                max={100}
+                step={0.5}
+                value={Math.round(assumptions.commissionRate * 1000) / 10}
+                onChange={handlePercentChange("commissionRate")}
+                className="text-sm"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="assumption-health">Health Plan Attach (%)</Label>
+              <Input
+                id="assumption-health"
+                type="number"
+                min={0}
+                max={5}
+                step={0.5}
+                value={Math.round(assumptions.healthAdoptionRate * 1000) / 10}
+                onChange={handlePercentChange("healthAdoptionRate")}
+                className="text-sm"
+              />
+              <p className="text-xs text-brand-gray">
+                Capped at 5% adoption; each enrolled employee with a health plan adds ${HEALTH_PLAN_REVENUE_PER_EMPLOYEE}/month.
+              </p>
+            </div>
           </div>
-          <div className="space-y-2">
-            <Label htmlFor="assumption-premium">Premium per Employee / Month ($)</Label>
-            <Input
-              id="assumption-premium"
-              type="number"
-              min={0}
-              step={1}
-              value={assumptions.premiumPerEmployee}
-              onChange={handleNumberChange("premiumPerEmployee")}
-              className="text-sm"
-            />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="assumption-commission">Commission Rate (%)</Label>
-            <Input
-              id="assumption-commission"
-              type="number"
-              min={0}
-              max={100}
-              step={0.5}
-              value={Math.round(assumptions.commissionRate * 1000) / 10}
-              onChange={handlePercentChange("commissionRate")}
-              className="text-sm"
-            />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="assumption-health">Health Plan Attach (%)</Label>
-            <Input
-              id="assumption-health"
-              type="number"
-              min={0}
-              max={100}
-              step={0.5}
-              value={Math.round(assumptions.healthAdoptionRate * 1000) / 10}
-              onChange={handlePercentChange("healthAdoptionRate")}
-              className="text-sm"
-            />
-            <p className="text-xs text-brand-gray">
-              Each enrolled employee with a health plan adds ${HEALTH_PLAN_REVENUE_PER_EMPLOYEE}/month.
-            </p>
-          </div>
-          <div className="md:col-span-2">
+          <div>
             <Button variant="outline" onClick={resetToBaseCase} disabled={isBaseCase} className="w-full md:w-auto">
               Reset to Base Case
             </Button>
           </div>
         </div>
 
-        <div className="overflow-x-auto">
+        <div className="mt-6 overflow-x-auto">
           <Table>
             <TableHeader>
               <TableRow className="bg-gradient-to-r from-soft-blue/60 to-brand-lightMint/40 text-brand-darkBlue">
@@ -237,7 +286,7 @@ const SensitivityAnalysis = () => {
                 <TableCell className="font-medium text-brand-darkBlue">Avg Employees per SMB</TableCell>
                 {metrics.rows.map((row) => (
                   <TableCell key={`${row.key}-employees`} className="text-right tabular-nums text-brand-darkBlue/90">
-                    {employeesFormatter.format(assumptions.avgEmployeesPerSmb)}
+                    {employeesFormatter.format(row.avgEmployeesPerSmb)}
                   </TableCell>
                 ))}
               </TableRow>
@@ -304,7 +353,7 @@ const SensitivityAnalysis = () => {
                 <TableCell className="font-medium text-brand-darkBlue">Base Revenue per Life (Monthly)</TableCell>
                 {metrics.rows.map((row) => (
                   <TableCell key={`${row.key}-base-revenue`} className="text-right tabular-nums text-brand-darkBlue/90">
-                    {currencyFormatter.format(metrics.baseRevenuePerLife)}
+                    {currencyFormatter.format(metrics.revenuePerLife)}
                   </TableCell>
                 ))}
               </TableRow>
@@ -328,7 +377,7 @@ const SensitivityAnalysis = () => {
                 <TableCell className="font-medium text-brand-darkBlue">Net Margin</TableCell>
                 {metrics.rows.map((row) => (
                   <TableCell key={`${row.key}-net-margin`} className="text-right tabular-nums text-brand-darkBlue/90">
-                    {percentFormatter.format(NET_MARGIN)}
+                    {row.netMargin == null ? "—" : percentFormatter.format(row.netMargin)}
                   </TableCell>
                 ))}
               </TableRow>
@@ -336,7 +385,7 @@ const SensitivityAnalysis = () => {
                 <TableCell className="font-medium text-brand-darkBlue">Margin per Life (Monthly)</TableCell>
                 {metrics.rows.map((row) => (
                   <TableCell key={`${row.key}-margin-life`} className="text-right tabular-nums text-brand-darkBlue/90">
-                    {currencyFormatter.format(metrics.marginPerLife)}
+                    {row.marginPerLife == null ? "—" : currencyFormatter.format(row.marginPerLife)}
                   </TableCell>
                 ))}
               </TableRow>

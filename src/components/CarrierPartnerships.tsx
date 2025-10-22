@@ -95,17 +95,17 @@ const carriers: CarrierDefinition[] = [
 ];
 
 const productCatalog = [
-  "Long Term Disability",
-  "Short Term Disability",
   "Accident Insurance",
-  "Long Term Care",
   "Critical Illness / Cancer",
-  "Identity Theft",
   "Dental",
-  "Vision",
-  "Medical / Supplemental Health",
   "Excess Disability",
+  "Identity Theft",
+  "Long Term Care",
+  "Long Term Disability",
+  "Medical / Supplemental Health",
+  "Short Term Disability",
   "Telehealth",
+  "Vision",
 ];
 
 // Removed Proof Points card
@@ -156,7 +156,7 @@ const CarrierPartnerships = ({ onNavigateNext }: { onNavigateNext: () => void })
                   onClick={() => setActiveCarrier((prev) => (prev?.name === carrier.name ? null : carrier))}
                   aria-pressed={isActive}
                   aria-label={carrier.name}
-                  className={`group flex h-24 items-center justify-center rounded-2xl border border-brand-blue/15 bg-gradient-to-br from-white via-white to-brand-lightMint/15 px-4 text-center shadow-sm transition-all hover:-translate-y-1 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-mint focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
+                  className={`group flex h-28 flex-col items-center justify-center rounded-2xl border border-brand-blue/15 bg-gradient-to-br from-white via-white to-brand-lightMint/15 px-4 text-center shadow-sm transition-all hover:-translate-y-1 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-mint focus-visible:ring-offset-2 focus-visible:ring-offset-white ${
                     isActive ? "border-brand-blue bg-brand-lightMint/30" : ""
                   }`}
                 >
@@ -165,6 +165,9 @@ const CarrierPartnerships = ({ onNavigateNext }: { onNavigateNext: () => void })
                     alt={carrier.name}
                     className={`${carrier.logoClassName ?? "h-14"} w-auto object-contain transition-opacity group-hover:opacity-90`}
                   />
+                  <span className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-brand-darkBlue/70">
+                    {carrier.name}
+                  </span>
                 </button>
               );
             })}
