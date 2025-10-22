@@ -95,7 +95,7 @@ const SensitivityAnalysis = () => {
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const value = Number(event.target.value);
       if (Number.isNaN(value)) return;
-      const maxPercent = key === "healthAdoptionRate" ? 5 : 100;
+      const maxPercent = key === "healthAdoptionRate" ? 25 : 100;
       const clamped = Math.min(Math.max(value, 0), maxPercent);
       const normalized = clamped / 100;
       setAssumptions((prev) => ({ ...prev, [key]: normalized }));
@@ -185,7 +185,7 @@ const SensitivityAnalysis = () => {
       <div className="mx-auto mb-6 w-full max-w-4xl rounded-2xl border border-brand-lightMint/40 bg-brand-lightMint/20 p-4 text-sm text-brand-darkBlue md:text-base">
         <p className="font-semibold text-brand-darkBlue">Disciplined Health Attachment Upside</p>
         <p className="mt-2 text-brand-gray">
-          Each 1% attach lifts ARR by roughly ${(HEALTH_PLAN_REVENUE_PER_EMPLOYEE * 12 * 10).toLocaleString()} per 1,000 lives on a conservative ${HEALTH_PLAN_REVENUE_PER_EMPLOYEE} per employee assumption; controls cap at 5% to reflect near-term runway.
+          Each 1% attach lifts ARR by roughly ${(HEALTH_PLAN_REVENUE_PER_EMPLOYEE * 12 * 10).toLocaleString()} per 1,000 lives on a conservative ${HEALTH_PLAN_REVENUE_PER_EMPLOYEE} per employee assumption; controls cap at 25% to reflect near-term runway.
         </p>
         <p className="mt-2 text-brand-gray">
           Sub-25 life groups juggle ACA 50% minimum contributions even on stripped-down plans, so Cakewalk choreographs compliant contribution strategy, plan design, and administration while owners stay focused on the core business.
@@ -238,14 +238,14 @@ const SensitivityAnalysis = () => {
                 id="assumption-health"
                 type="number"
                 min={0}
-                max={5}
+                max={25}
                 step={0.5}
                 value={Math.round(assumptions.healthAdoptionRate * 1000) / 10}
                 onChange={handlePercentChange("healthAdoptionRate")}
                 className="text-sm"
               />
               <p className="text-xs text-brand-gray">
-                Capped at 5% adoption; each enrolled employee with a health plan adds ${HEALTH_PLAN_REVENUE_PER_EMPLOYEE}/month.
+                Capped at 25% adoption; each enrolled employee with a health plan adds ${HEALTH_PLAN_REVENUE_PER_EMPLOYEE}/month.
               </p>
             </div>
           </div>

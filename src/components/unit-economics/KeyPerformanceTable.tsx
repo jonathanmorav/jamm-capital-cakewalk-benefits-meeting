@@ -15,7 +15,7 @@ const KeyPerformanceTable = () => {
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-brand-blue">KPIs</p>
         <h3 className="mt-2 text-2xl font-bold text-brand-darkBlue md:text-3xl">Key Performance Indicators</h3>
         <p className="mt-2 text-xs text-brand-gray/80 md:text-sm">
-          Projections below reflect Cakewalk&apos;s base case with <span className="font-semibold text-brand-darkBlue/80">zero health plan attachment</span>; incremental health revenue (capped at 5% attach) is explored in the sensitivity model.
+          Projections below reflect Cakewalk&apos;s base case with <span className="font-semibold text-brand-darkBlue/80">zero health plan attachment</span>; incremental health revenue (capped at 25% attach) is explored in the sensitivity model.
         </p>
       </header>
       <div className="overflow-x-auto rounded-3xl border border-brand-blue/15 bg-white/95 p-4 shadow-md md:p-6">
