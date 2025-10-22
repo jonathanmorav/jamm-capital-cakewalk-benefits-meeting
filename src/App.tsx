@@ -9,7 +9,6 @@ import { ContentEditProvider } from "./context/ContentEditContext";
 import { ViewModeProvider } from "./context/ViewModeContext";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import VisitorGate from "@/components/gating/VisitorGate";
 
 // Create the query client
 const queryClient = new QueryClient();
@@ -22,7 +21,6 @@ const App = () => (
           <div className="font-sans antialiased text-brand-darkBlue">
             <Toaster />
             <Sonner />
-            <VisitorGate />
             <BrowserRouter basename={import.meta.env.BASE_URL}>
               <Routes>
                 <Route path="/" element={<Index />} />
