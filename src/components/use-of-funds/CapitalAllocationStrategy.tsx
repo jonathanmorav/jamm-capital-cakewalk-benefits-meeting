@@ -10,7 +10,8 @@ const allocations = [
     details: [
       "Expand carrier integrations and affinity-ready bundles across the roadmap.",
       "Advance underwriting automation and analytics to lift conversion and retention.",
-      "Ship customer-facing enhancements faster with dedicated product squads."
+      "Ship customer-facing enhancements faster with dedicated product squads.",
+      "AI driven product selection and recommendation engine."
     ]
   },
   {
