@@ -246,18 +246,6 @@ const EconomicValue = () => {
                   {c.toLocaleString()}
                 </Button>
               ))}
-              <div className="ml-2 flex items-center gap-2">
-                <Label htmlFor="ev-agentcount" className="text-xs text-brand-gray">Custom</Label>
-                <Input
-                  id="ev-agentcount"
-                  type="number"
-                  min={0}
-                  step={50}
-                  value={agentCount}
-                  onChange={(e) => setAgentCount(Math.max(0, Number(e.target.value) || 0))}
-                  className="h-9 w-28 text-sm"
-                />
-              </div>
             </div>
           </div>
 
@@ -283,4 +271,3 @@ const EconomicValue = () => {
 };
 
 export default EconomicValue;
-
