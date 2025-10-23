@@ -53,7 +53,7 @@ const layers: LayerDefinition[] = [
       {
         id: "partner-agent-os",
         title: "Partner & Agent OS",
-        description: "Cakewalk provides agents with a comprehensive operating system to sell and manage life insurance policies.",
+        description: "Cakewalk provides agents with a comprehensive operating system to sell and manage group insurance policies.",
         bullets: [
           "Rapid agent onboarding and eligibility checks.",
           "Quoting tools and near real-time application tracking.",
