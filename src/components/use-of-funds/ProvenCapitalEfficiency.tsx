@@ -16,7 +16,7 @@ const ProvenCapitalEfficiency = () => {
       <header className="mx-auto mb-6 w-full max-w-4xl text-left md:text-center">
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-brand-blue">Proven Capital Efficiency</p>
         <h2 className="mt-3 text-2xl font-bold text-brand-darkBlue md:text-3xl">
-          Momentum Built with Disciplined Spend
+          Momentum Built with Speed
         </h2>
       </header>
 
@@ -31,17 +31,18 @@ const ProvenCapitalEfficiency = () => {
               </span>
               <span>$750K premium run rate within 90 days of launch</span>
             </li>
-            <li className={listStyles}>
-              <span className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand-mint/20">
-                <Check className="h-3.5 w-3.5 text-brand-teal" />
-              </span>
-              <span>$2M premium run rate within 6 months</span>
-            </li>
+            
             <li className={listStyles}>
               <span className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand-mint/20">
                 <Check className="h-3.5 w-3.5 text-brand-teal" />
               </span>
               <span>Five-person team built MVP platform and initial GTM distribution</span>
+            </li>
+            <li className={listStyles}>
+              <span className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand-mint/20">
+                <Check className="h-3.5 w-3.5 text-brand-teal" />
+              </span>
+              <span>Team has grown to 13 across product, engineering, and operations</span>
             </li>
             <li className={listStyles}>
               <span className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand-mint/20">
@@ -66,7 +67,7 @@ const ProvenCapitalEfficiency = () => {
               <span className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand-mint/20">
                 <Check className="h-3.5 w-3.5 text-brand-teal" />
               </span>
-              <span>1,200 SMBs served</span>
+              <span>1,200+ SMBs served</span>
             </li>
             <li className={listStyles}>
               <span className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand-mint/20">
@@ -78,18 +79,36 @@ const ProvenCapitalEfficiency = () => {
               <span className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand-mint/20">
                 <Check className="h-3.5 w-3.5 text-brand-teal" />
               </span>
-              <span>$700K ARR</span>
+              <span>ARR (run rate): $700K+</span>
             </li>
           </ul>
         </article>
 
-        <article className="rounded-2xl border border-brand-blue/15 bg-white/95 p-6 shadow-md text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-brand-blue/70">Capital Deployed</p>
-          <h3 className="mt-3 text-lg font-semibold text-brand-darkBlue">All-In Spend to Date</h3>
-          <p className="mt-6 text-4xl font-bold text-brand-blue">$700K</p>
-          <p className="mt-3 text-sm text-brand-gray">
-            Product, engineering, GTM, and operations invested to reach today’s traction.
-          </p>
+        <article className="rounded-2xl border border-brand-blue/15 bg-white/95 p-6 shadow-md">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-brand-blue/70">Capital Efficiency</p>
+          <h3 className="mt-2 text-lg font-semibold text-brand-darkBlue">All-in spend to date</h3>
+          <p className="mt-4 text-3xl font-bold text-brand-darkBlue">$700K</p>
+          <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-brand-blue/70">Key investments</p>
+          <ul className="mt-3 space-y-3 list-none">
+            <li className={listStyles}>
+              <span className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand-mint/20">
+                <Check className="h-3.5 w-3.5 text-brand-teal" />
+              </span>
+              <span>Talent across product and engineering</span>
+            </li>
+            <li className={listStyles}>
+              <span className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand-mint/20">
+                <Check className="h-3.5 w-3.5 text-brand-teal" />
+              </span>
+              <span>Operations and customer support capacity</span>
+            </li>
+            <li className={listStyles}>
+              <span className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand-mint/20">
+                <Check className="h-3.5 w-3.5 text-brand-teal" />
+              </span>
+              <span>Insurance infrastructure (carrier bindings, compliance, admin stack)</span>
+            </li>
+          </ul>
         </article>
       </div>
     </motion.section>
