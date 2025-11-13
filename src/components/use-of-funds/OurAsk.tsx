@@ -41,19 +41,25 @@ const OurAsk = () => {
 
         <article className="rounded-2xl border border-brand-blue/15 bg-white/95 p-6 shadow-md">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-brand-blue/70">Current Raise</p>
-          <h3 className="mt-2 text-lg font-semibold text-brand-darkBlue">Seed Round</h3>
+          <h3 className="mt-2 text-lg font-semibold text-brand-darkBlue">Seed round (SAFE)</h3>
           <ul className="mt-4 space-y-3">
             <li className={listStyles}>
               <span className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand-mint/20">
                 <Check className="h-3.5 w-3.5 text-brand-teal" />
               </span>
-              <span>Raising $5,000,000 on a SAFE note.</span>
+              <span>Raising our Seed on a SAFE.</span>
             </li>
             <li className={listStyles}>
               <span className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand-mint/20">
                 <Check className="h-3.5 w-3.5 text-brand-teal" />
               </span>
-              <span>$25,000,000 post-money valuation cap.</span>
+              <span>Terms and allocation discussed live; inquire for details.</span>
+            </li>
+            <li className={listStyles}>
+              <span className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand-mint/20">
+                <Check className="h-3.5 w-3.5 text-brand-teal" />
+              </span>
+              <span>Request a meeting to review fit.</span>
             </li>
           </ul>
         </article>
