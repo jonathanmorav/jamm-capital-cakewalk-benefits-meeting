@@ -39,7 +39,7 @@ const UseOfFunds = ({
         }} transition={{
           delay: 0.2
         }}>
-            <span className="text-brand-blue text-sm font-medium">Capital Raise for Our Next Stage of Growth</span>
+            <span className="text-brand-blue text-sm font-medium">Funding & Milestones</span>
           </motion.div>
           
           <motion.h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-brand-blue font-grotesk text-center mb-4" initial={{
