@@ -28,13 +28,13 @@ const OurAsk = () => {
               <span className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand-mint/20">
                 <Check className="h-3.5 w-3.5 text-brand-teal" />
               </span>
-              <span>Pre-seed friends & family round closed in 2025 at a $10M post-money valuation cap.</span>
+              <span>Raised $700K pre-seed friends & family round in 2025 at a $10M post-money valuation cap.</span>
             </li>
             <li className={listStyles}>
               <span className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand-mint/20">
                 <Check className="h-3.5 w-3.5 text-brand-teal" />
               </span>
-              <span>$700K deployed to build the platform, initial GTM, and core team.</span>
+              <span>Investments focused on product and engineering talent, operations and customer support, and insurance infrastructure.</span>
             </li>
           </ul>
         </article>
