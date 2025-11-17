@@ -9,6 +9,10 @@ interface CoverScreenProps {
 const CoverScreen = ({
   onNavigateNext
 }: CoverScreenProps) => {
+  const formattedMonthYear = new Date().toLocaleString("en-US", {
+    month: "long",
+    year: "numeric"
+  });
   const containerRef = useRef<HTMLDivElement>(null);
   return <section ref={containerRef} aria-labelledby="cover-title" className="min-h-screen w-full flex flex-col items-center justify-center relative py-[15vh] overflow-hidden">
       {/* Custom animated background */}
@@ -91,7 +95,7 @@ const CoverScreen = ({
           fontSize: "clamp(14px, 2vw, 18px)",
           lineHeight: 1.6
         }}>
-            October 2025
+            {formattedMonthYear}
           </motion.p>
         </div>
       </div>
