@@ -6,13 +6,15 @@ import { componentTagger } from "lovable-tagger";
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
+  // For GitHub Pages: use "/" for user/org pages, "/repo-name/" for project pages
+  // Set VITE_BASE environment variable if deploying to project pages
   const base = env.VITE_BASE?.startsWith("/") ? env.VITE_BASE : "/";
 
   return {
     base,
     server: {
       host: "::",
-      port: 8080,
+      port: 3000,
     },
     build: {
       // Output to repo-level docs for GitHub Pages

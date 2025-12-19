@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# GitHub Pages (docs folder is used for deployment)
+# Keep docs/assets for PDF/DOCX files
+docs/*
+!docs/assets/
+!docs/assets/**

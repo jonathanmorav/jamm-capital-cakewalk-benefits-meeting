@@ -55,7 +55,7 @@ const CoverScreen = ({
             }}
             className="font-semibold mt-4 md:mt-6 text-white max-w-[900px] mx-auto"
           >
-            Our mission is to make high‑quality employee benefits accessible and affordable for every small business—and to empower partners and carriers to serve them at scale.
+            Establish alignment on vision, strategy, and execution to build the foundation for long-term value creation and strategic partnership.
           </motion.h1>
 
           <motion.p
@@ -81,7 +81,7 @@ const CoverScreen = ({
           fontSize: "clamp(18px, 3vw, 26px)",
           lineHeight: 1.3
         }}>
-            Seed Round Deck
+            JAMM Capital {'<>'} Cakewalk Benefits
           </motion.p>
           
           <motion.p className="mt-2 md:mt-4 text-white/80" initial={{
@@ -93,6 +93,20 @@ const CoverScreen = ({
           delay: 0.6
         }} style={{
           fontSize: "clamp(14px, 2vw, 18px)",
+          lineHeight: 1.6
+        }}>
+            Strategic Partnership Meeting
+          </motion.p>
+          
+          <motion.p className="mt-2 md:mt-4 text-white/70" initial={{
+          opacity: 0
+        }} animate={{
+          opacity: 1
+        }} transition={{
+          duration: 0.7,
+          delay: 0.8
+        }} style={{
+          fontSize: "clamp(12px, 1.8vw, 16px)",
           lineHeight: 1.6
         }}>
             {formattedMonthYear}

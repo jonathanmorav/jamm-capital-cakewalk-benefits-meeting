@@ -1,68 +1,41 @@
 
 import CoverScreen from "@/components/CoverScreen";
-import EarlyTraction from "@/components/EarlyTraction";
-import ProblemStatement from "@/components/ProblemStatement";
-import WhyBenefitsMatter from "@/components/WhyBenefitsMatter";
-import BenefitsBarrier from "@/components/benefits-barrier/BenefitsBarrier";
-import TAMOpportunity from "@/components/TAMOpportunity";
-import SolutionOverview from "@/components/SolutionOverview";
-import WhyNow from "@/components/WhyNow";
-import CakewalkModel from "@/components/CakewalkModel";
-import CakewalkExperience from "@/components/CakewalkExperience";
-import CakewalkTechPlatform from "@/components/CakewalkTechPlatform";
-import GTMDistribution from "@/components/GTMDistribution";
-import CarrierPartnerships from "@/components/CarrierPartnerships";
-import UnitEconomics from "@/components/UnitEconomics";
-import UseOfFunds from "@/components/UseOfFunds";
-import Team from "@/components/Team";
-import WrapUp from "@/components/WrapUp";
-import Contact from "@/components/Contact";
+import WelcomeFraming from "@/components/meeting/WelcomeFraming";
+import StrategicVision from "@/components/meeting/StrategicVision";
+import GoToMarket from "@/components/meeting/GoToMarket";
+import ProductTechnology from "@/components/meeting/ProductTechnology";
+import BusinessModelEconomics from "@/components/meeting/BusinessModelEconomics";
+import FinancialsCapitalStrategy from "@/components/meeting/FinancialsCapitalStrategy";
+import OperationsInfrastructure from "@/components/meeting/OperationsInfrastructure";
+import InvestorEngagementNextSteps from "@/components/meeting/InvestorEngagementNextSteps";
 
 export type DeckSection = {
   id: string;
   title: string;
 };
 
-// Section definitions with updated titles
+// Section definitions for JAMM Capital <> Cakewalk Benefits Meeting
 export const sections: DeckSection[] = [
-  { id: "cover", title: "Mission Statement" },
-  { id: "early-traction", title: "Early Traction" },
-  { id: "problem", title: "Problem Statement" },
-  { id: "why", title: "Why Benefits Matter" },
-  { id: "barriers", title: "A Major Structural Problem" },
-  { id: "tam", title: "Total Addressable Market" },
-  { id: "why-now", title: "Why Now" },
-  { id: "solution", title: "The Cakewalk Experience - Product Demo" },
-  { id: "cakewalk-model", title: "The Cakewalk Model" },
-  { id: "cakewalk-experience", title: "The Cakewalk Platform" },
-  { id: "cakewalk-tech", title: "Technology Stack" },
-  { id: "distribution", title: "GTM / Distribution" },
-  { id: "carrier-partnerships", title: "Carrier Partnerships" },
-  { id: "unit-economics", title: "Unit Economics" },
-  { id: "use-of-funds", title: "Use of Funds" },
-  { id: "team", title: "The Team" },
-  { id: "wrap-up", title: "Why Cakewalk Wins" },
-  { id: "contact", title: "Contact" },
+  { id: "cover", title: "Cakewalk & JAMM Capital Meeting" },
+  { id: "welcome-framing", title: "Welcome & Framing" },
+  { id: "strategic-vision", title: "Strategic Vision" },
+  { id: "go-to-market", title: "How we Go-to-Market" },
+  { id: "product-technology", title: "Product & Technology" },
+  { id: "business-model-economics", title: "Business Model & Economics" },
+  { id: "financials-capital-strategy", title: "Financials & Capital Strategy" },
+  { id: "operations-infrastructure", title: "Operations & Infrastructure" },
+  { id: "investor-engagement-next-steps", title: "Investor Engagement & Next Steps" },
 ];
 
 // Mapping of section IDs to their respective components
 export const sectionComponents = {
   "cover": CoverScreen,
-  "early-traction": EarlyTraction,
-  "problem": ProblemStatement,
-  "why": WhyBenefitsMatter,
-  "barriers": BenefitsBarrier,
-  "tam": TAMOpportunity,
-  "why-now": WhyNow,
-  "solution": SolutionOverview,
-  "cakewalk-model": CakewalkModel,
-  "cakewalk-experience": CakewalkExperience,
-  "cakewalk-tech": CakewalkTechPlatform,
-  "distribution": GTMDistribution,
-  "carrier-partnerships": CarrierPartnerships,
-  "unit-economics": UnitEconomics,
-  "use-of-funds": UseOfFunds,
-  "team": Team,
-  "wrap-up": WrapUp,
-  "contact": Contact,
+  "welcome-framing": WelcomeFraming,
+  "strategic-vision": StrategicVision,
+  "go-to-market": GoToMarket,
+  "product-technology": ProductTechnology,
+  "business-model-economics": BusinessModelEconomics,
+  "financials-capital-strategy": FinancialsCapitalStrategy,
+  "operations-infrastructure": OperationsInfrastructure,
+  "investor-engagement-next-steps": InvestorEngagementNextSteps,
 };
