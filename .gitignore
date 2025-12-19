@@ -26,12 +26,10 @@ dist-ssr
 # GitHub Pages (docs folder is used for deployment)
 # Allow built files for legacy GitHub Pages deployment
 # For GitHub Actions deployment, these are built during workflow
-# Ignore specific old build files but allow new ones
-docs/assets/index-B*.js
-docs/assets/index-B*.css
-# Allow current build files
-!docs/assets/index-C*.js
-!docs/assets/index-C*.css
+# Allow all current build files (JS/CSS with hash names)
+!docs/assets/index-*.js
+!docs/assets/index-*.css
+!docs/index.html
 # Allow source assets
 !docs/assets/*.pdf
 !docs/assets/*.docx
@@ -39,3 +37,7 @@ docs/assets/index-B*.css
 !docs/assets/*.jpeg
 !docs/assets/*.jpg
 !docs/assets/*.svg
+!docs/assets/*.gif
+!docs/*.ico
+!docs/*.svg
+!docs/*.txt
