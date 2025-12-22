@@ -13,6 +13,14 @@ const operatingModel = {
   description: "Building the infrastructure for compliant, scalable growth",
 };
 
+interface TabContent {
+  tabLabel: string;
+  overview: string;
+  detailOverview?: string;
+  strategy?: string[];
+  statusBullets?: string[];
+}
+
 interface LicensingApproach {
   id: string;
   title: string;
@@ -25,6 +33,7 @@ interface LicensingApproach {
   details?: string[];
   status?: string;
   statusBullets?: string[];
+  tabs?: TabContent[];
 }
 
 const licensingApproaches: LicensingApproach[] = [
@@ -52,22 +61,43 @@ const licensingApproaches: LicensingApproach[] = [
   },
   {
     id: "trust",
-    title: "Multiple Employer Trust Establishment",
+    title: "Insurance Operations & Carrier Contracting Model",
     icon: Building,
     badgeClass: "bg-soft-purple text-brand-darkBlue",
     tileClass: "bg-soft-purple/80 border border-soft-purple/60 text-brand-darkBlue",
-    overview: "Establishment and management of Multiple Employer Trust (MET) contracting vehicle — our primary method of contracting one (carriers & policies) to many (policyholders).",
-    strategy: [
-      "One-to-many contracting vehicle",
-      "Fiduciary and directed Trust serving as the receiver, holder, and remitter of all insurance premiums",
-      "Trust administration and compliance",
-      "Regulatory oversight and reporting requirements",
-    ],
-    statusBullets: [
-      "Corporate Trust filed in Delaware with support of Fisher Phillips (ERISA attorney) and Richards, Layton, & Finger (Delaware Statutory Trust attorney) on 12/8/2025",
-      "Corporate Trustee appointed through WSFS Bank in Delaware",
-      "Trust available for receipt of insurance premiums and contracting with carriers",
-      "Next step: By EOJan'26, redirect all current inbound premiums to Trust account (via Dwolla payment facilitator)",
+    overview: "Contracting vehicles enabling one-to-many carrier relationships through Multiple Employer Trusts and Association partnerships.",
+    tabs: [
+      {
+        tabLabel: "Multiple Trust Establishment",
+        overview: "Establishment and management of Multiple Employer Trust (MET) contracting vehicle — our primary method of contracting one (carriers & policies) to many (policyholders).",
+        strategy: [
+          "One-to-many contracting vehicle",
+          "Fiduciary and directed Trust serving as the receiver, holder, and remitter of all insurance premiums",
+          "Trust administration and compliance",
+          "Regulatory oversight and reporting requirements",
+        ],
+        statusBullets: [
+          "Corporate Trust filed in Delaware with support of Fisher Phillips (ERISA attorney) and Richards, Layton, & Finger (Delaware Statutory Trust attorney) on 12/8/2025",
+          "Corporate Trustee appointed through WSFS Bank in Delaware",
+          "Trust available for receipt of insurance premiums and contracting with carriers",
+          "Next step: By EOJan'26, redirect all current inbound premiums to Trust account (via Dwolla payment facilitator)",
+        ],
+      },
+      {
+        tabLabel: "Association Contracting Model",
+        overview: "Partnering with established associations to access their carrier contracts and group purchasing power, enabling rapid market entry without direct carrier relationships.",
+        strategy: [
+          "Leverage existing association carrier relationships",
+          "Access group purchasing power and negotiated rates",
+          "Reduced time-to-market vs. direct carrier contracting",
+          "Complementary to MET for broader product access",
+        ],
+        statusBullets: [
+          "Evaluating association partnership opportunities",
+          "Target associations with strong SMB membership base",
+          "Association model enables access to products not available through MET",
+        ],
+      },
     ],
   },
   {
@@ -144,11 +174,20 @@ const fadeUp = {
 
 const OperationsInfrastructure = ({ onNavigateNext }: OperationsInfrastructureProps) => {
   const [activeId, setActiveId] = useState<string>(licensingApproaches[0]?.id ?? "");
+  const [activeTabIndex, setActiveTabIndex] = useState<number>(0);
 
   const active = useMemo(
     () => licensingApproaches.find((a) => a.id === activeId),
     [activeId]
   );
+
+  // Reset tab index when switching cards
+  const handleActivate = (id: string) => {
+    if (id !== activeId) {
+      setActiveTabIndex(0);
+    }
+    setActiveId(id);
+  };
 
   return (
     <section className="relative min-h-screen overflow-hidden bg-white py-16 md:py-24 lg:py-32">
@@ -204,7 +243,7 @@ const OperationsInfrastructure = ({ onNavigateNext }: OperationsInfrastructurePr
                 key={approach.id}
                 approach={approach}
                 isActive={isActive}
-                onActivate={setActiveId}
+                onActivate={handleActivate}
               />
             );
           })}
@@ -220,42 +259,113 @@ const OperationsInfrastructure = ({ onNavigateNext }: OperationsInfrastructurePr
             className="rounded-3xl border border-brand-blue/15 bg-white/90 p-6 shadow-sm"
           >
             <h2 className="text-2xl font-semibold text-brand-darkBlue">{active.title}</h2>
-            <p className="mt-3 text-sm text-brand-gray md:text-base">{active.detailOverview || active.overview}</p>
 
-            {/* Strategy */}
-            {active.strategy?.length ? (
-              <div className="mt-6">
-                <SectionLabel>Key Components</SectionLabel>
-                <ul className="mt-3 space-y-2 text-sm text-brand-gray md:text-base">
-                  {active.strategy.map((s) => (
-                    <li key={s} className="flex items-start gap-2">
-                      <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-brand-mint" />
-                      <span>{s}</span>
-                    </li>
+            {/* Tabbed content for cards with tabs */}
+            {active.tabs?.length ? (
+              <>
+                {/* Tab buttons */}
+                <div className="mt-4 flex gap-2 border-b border-brand-blue/10 pb-0">
+                  {active.tabs.map((tab, index) => (
+                    <button
+                      key={tab.tabLabel}
+                      type="button"
+                      onClick={() => setActiveTabIndex(index)}
+                      className={`px-4 py-2 text-sm font-medium transition-colors ${
+                        activeTabIndex === index
+                          ? "border-b-2 border-brand-blue text-brand-blue"
+                          : "text-brand-gray hover:text-brand-darkBlue"
+                      }`}
+                    >
+                      {tab.tabLabel}
+                    </button>
                   ))}
-                </ul>
-              </div>
-            ) : null}
+                </div>
 
-            {/* Status */}
-            {active.statusBullets?.length ? (
-              <div className="mt-6">
-                <SectionLabel>Status</SectionLabel>
-                <ul className="mt-3 space-y-2 text-sm text-brand-gray md:text-base">
-                  {active.statusBullets.map((s) => (
-                    <li key={s} className="flex items-start gap-2">
-                      <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-brand-teal" />
-                      <span>{s}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : active.status ? (
-              <div className="mt-6">
-                <SectionLabel>Status</SectionLabel>
-                <p className="mt-3 text-sm text-brand-gray md:text-base">{active.status}</p>
-              </div>
-            ) : null}
+                {/* Tab content */}
+                {active.tabs[activeTabIndex] && (
+                  <motion.div
+                    key={activeTabIndex}
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <p className="mt-4 text-sm text-brand-gray md:text-base">
+                      {active.tabs[activeTabIndex].detailOverview || active.tabs[activeTabIndex].overview}
+                    </p>
+
+                    {/* Strategy */}
+                    {active.tabs[activeTabIndex].strategy?.length ? (
+                      <div className="mt-6">
+                        <SectionLabel>Key Components</SectionLabel>
+                        <ul className="mt-3 space-y-2 text-sm text-brand-gray md:text-base">
+                          {active.tabs[activeTabIndex].strategy?.map((s) => (
+                            <li key={s} className="flex items-start gap-2">
+                              <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-brand-mint" />
+                              <span>{s}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : null}
+
+                    {/* Status */}
+                    {active.tabs[activeTabIndex].statusBullets?.length ? (
+                      <div className="mt-6">
+                        <SectionLabel>Status</SectionLabel>
+                        <ul className="mt-3 space-y-2 text-sm text-brand-gray md:text-base">
+                          {active.tabs[activeTabIndex].statusBullets?.map((s) => (
+                            <li key={s} className="flex items-start gap-2">
+                              <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-brand-teal" />
+                              <span>{s}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : null}
+                  </motion.div>
+                )}
+              </>
+            ) : (
+              /* Non-tabbed content (original behavior) */
+              <>
+                <p className="mt-3 text-sm text-brand-gray md:text-base">{active.detailOverview || active.overview}</p>
+
+                {/* Strategy */}
+                {active.strategy?.length ? (
+                  <div className="mt-6">
+                    <SectionLabel>Key Components</SectionLabel>
+                    <ul className="mt-3 space-y-2 text-sm text-brand-gray md:text-base">
+                      {active.strategy.map((s) => (
+                        <li key={s} className="flex items-start gap-2">
+                          <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-brand-mint" />
+                          <span>{s}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
+
+                {/* Status */}
+                {active.statusBullets?.length ? (
+                  <div className="mt-6">
+                    <SectionLabel>Status</SectionLabel>
+                    <ul className="mt-3 space-y-2 text-sm text-brand-gray md:text-base">
+                      {active.statusBullets.map((s) => (
+                        <li key={s} className="flex items-start gap-2">
+                          <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-brand-teal" />
+                          <span>{s}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : active.status ? (
+                  <div className="mt-6">
+                    <SectionLabel>Status</SectionLabel>
+                    <p className="mt-3 text-sm text-brand-gray md:text-base">{active.status}</p>
+                  </div>
+                ) : null}
+              </>
+            )}
           </motion.div>
         )}
       </div>
