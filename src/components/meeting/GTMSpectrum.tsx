@@ -162,7 +162,7 @@ const GTMSpectrum = ({ onNavigateNext }: GTMSpectrumProps) => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-4 font-grotesk text-3xl font-bold text-brand-darkBlue sm:text-4xl md:text-5xl"
           >
-            GTM Motion Spectrum
+            GTM Spectrum
           </framerMotion.h1>
           <framerMotion.p
             variants={fadeUp}

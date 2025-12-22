@@ -21,7 +21,7 @@ export const sections: DeckSection[] = [
   { id: "strategic-vision", title: "Strategic Vision" },
   { id: "product-technology", title: "Product & Technology" },
   { id: "product-showcase", title: "Product Showcase" },
-  { id: "gtm-spectrum", title: "GTM Motion Spectrum" },
+  { id: "gtm-spectrum", title: "GTM Spectrum" },
   { id: "go-to-market", title: "How we Go-to-Market" },
   { id: "operations-infrastructure", title: "Operations & Infrastructure" },
   { id: "investor-engagement-next-steps", title: "Investor Engagement & Next Steps" },
