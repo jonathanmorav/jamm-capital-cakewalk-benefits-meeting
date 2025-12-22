@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { motion } from "framer-motion";
+import { motion as framerMotion } from "framer-motion";
 import NavigationArrow from "../navigation/NavigationArrow";
 import BottomCornerLogo from "../BottomCornerLogo";
 import { Users, Store, Plug, Rocket, Clock, DollarSign, AlertTriangle, Target } from "lucide-react";
@@ -142,7 +142,7 @@ const GTMSpectrum = ({ onNavigateNext }: GTMSpectrumProps) => {
       <div className="absolute -bottom-1/3 left-[-10%] h-1/2 w-1/2 rounded-full bg-brand-lightMint opacity-[0.08] blur-3xl" />
 
       <div className="container relative z-10 mx-auto flex w-full max-w-6xl flex-col gap-12 px-4 md:px-6">
-        <motion.header
+        <framerMotion.header
           variants={fadeUp}
           initial="initial"
           whileInView="animate"
@@ -150,31 +150,31 @@ const GTMSpectrum = ({ onNavigateNext }: GTMSpectrumProps) => {
           transition={{ duration: 0.6 }}
           className="text-left md:text-center"
         >
-          <motion.div
+          <framerMotion.div
             className="inline-flex items-center rounded-full bg-white/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.3em] text-brand-blue shadow-sm"
             variants={fadeUp}
             transition={{ duration: 0.4, delay: 0.1 }}
           >
             Go-to-Market Strategy
-          </motion.div>
-          <motion.h1
+          </framerMotion.div>
+          <framerMotion.h1
             variants={fadeUp}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-4 font-grotesk text-3xl font-bold text-brand-darkBlue sm:text-4xl md:text-5xl"
           >
             GTM Motion Spectrum
-          </motion.h1>
-          <motion.p
+          </framerMotion.h1>
+          <framerMotion.p
             variants={fadeUp}
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mt-4 text-base text-brand-gray md:text-lg"
           >
             Balancing velocity, cost, and control across distribution channels
-          </motion.p>
-        </motion.header>
+          </framerMotion.p>
+        </framerMotion.header>
 
         {/* Velocity Spectrum Visualization */}
-        <motion.div
+        <framerMotion.div
           variants={fadeUp}
           initial="initial"
           whileInView="animate"
@@ -197,48 +197,51 @@ const GTMSpectrum = ({ onNavigateNext }: GTMSpectrumProps) => {
           {/* Spectrum Bar */}
           <div className="relative h-4 rounded-full bg-gradient-to-r from-brand-lightMint via-soft-blue via-50% via-soft-purple to-soft-orange">
             {/* Position markers for each motion */}
-            {gtmMotions.map((motion) => (
-              <button
-                key={motion.id}
-                type="button"
-                onClick={() => setActiveId(motion.id)}
-                className={`absolute top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-200 ${
-                  activeId === motion.id ? "z-10 scale-125" : "hover:scale-110"
-                }`}
-                style={{ left: `${motion.position}%` }}
-              >
-                <div
-                  className={`flex h-8 w-8 items-center justify-center rounded-full border-2 shadow-md ${
-                    activeId === motion.id
-                      ? "border-brand-blue bg-white"
-                      : "border-white bg-brand-darkBlue/80"
+            {gtmMotions.map((gtmMotion) => {
+              const IconComponent = gtmMotion.icon;
+              return (
+                <button
+                  key={gtmMotion.id}
+                  type="button"
+                  onClick={() => setActiveId(gtmMotion.id)}
+                  className={`absolute top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-200 ${
+                    activeId === gtmMotion.id ? "z-10 scale-125" : "hover:scale-110"
                   }`}
+                  style={{ left: `${gtmMotion.position}%` }}
                 >
-                  <motion.icon
-                    className={`h-4 w-4 ${
-                      activeId === motion.id ? "text-brand-blue" : "text-white"
+                  <div
+                    className={`flex h-8 w-8 items-center justify-center rounded-full border-2 shadow-md ${
+                      activeId === gtmMotion.id
+                        ? "border-brand-blue bg-white"
+                        : "border-white bg-brand-darkBlue/80"
                     }`}
-                  />
-                </div>
-              </button>
-            ))}
+                  >
+                    <IconComponent
+                      className={`h-4 w-4 ${
+                        activeId === gtmMotion.id ? "text-brand-blue" : "text-white"
+                      }`}
+                    />
+                  </div>
+                </button>
+              );
+            })}
           </div>
 
           {/* Motion Labels Below Spectrum */}
           <div className="relative mt-8 h-20 md:h-12">
-            {gtmMotions.map((motion) => (
+            {gtmMotions.map((gtmMotion) => (
               <button
-                key={`label-${motion.id}`}
+                key={`label-${gtmMotion.id}`}
                 type="button"
-                onClick={() => setActiveId(motion.id)}
+                onClick={() => setActiveId(gtmMotion.id)}
                 className={`absolute -translate-x-1/2 text-center transition-all duration-200 ${
-                  activeId === motion.id
+                  activeId === gtmMotion.id
                     ? "font-semibold text-brand-blue"
                     : "text-brand-gray hover:text-brand-darkBlue"
                 }`}
-                style={{ left: `${motion.position}%` }}
+                style={{ left: `${gtmMotion.position}%` }}
               >
-                <span className="block whitespace-nowrap text-xs md:text-sm">{motion.title}</span>
+                <span className="block whitespace-nowrap text-xs md:text-sm">{gtmMotion.title}</span>
               </button>
             ))}
           </div>
@@ -254,10 +257,10 @@ const GTMSpectrum = ({ onNavigateNext }: GTMSpectrumProps) => {
               <DollarSign className="h-4 w-4 text-soft-orange" />
             </div>
           </div>
-        </motion.div>
+        </framerMotion.div>
 
         {/* Four Motion Cards */}
-        <motion.div
+        <framerMotion.div
           variants={fadeUp}
           initial="initial"
           whileInView="animate"
@@ -265,22 +268,22 @@ const GTMSpectrum = ({ onNavigateNext }: GTMSpectrumProps) => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="grid gap-4 md:grid-cols-2 lg:grid-cols-4"
         >
-          {gtmMotions.map((motion) => {
-            const isActive = motion.id === activeId;
+          {gtmMotions.map((gtmMotion) => {
+            const isActive = gtmMotion.id === activeId;
             return (
               <MotionCard
-                key={motion.id}
-                motion={motion}
+                key={gtmMotion.id}
+                gtmMotion={gtmMotion}
                 isActive={isActive}
                 onActivate={setActiveId}
               />
             );
           })}
-        </motion.div>
+        </framerMotion.div>
 
         {/* Detail Panel */}
         {active && (
-          <motion.div
+          <framerMotion.div
             key={active.id}
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -338,7 +341,7 @@ const GTMSpectrum = ({ onNavigateNext }: GTMSpectrumProps) => {
             <div className="mt-6 rounded-2xl border border-brand-blue/10 bg-brand-blue/5 p-4">
               <p className="text-sm font-medium text-brand-darkBlue">{active.focusNote}</p>
             </div>
-          </motion.div>
+          </framerMotion.div>
         )}
       </div>
 
@@ -354,44 +357,47 @@ const GTMSpectrum = ({ onNavigateNext }: GTMSpectrumProps) => {
 };
 
 interface MotionCardProps {
-  motion: MotionDefinition;
+  gtmMotion: MotionDefinition;
   isActive: boolean;
   onActivate: (id: string) => void;
 }
 
-const MotionCard = ({ motion, isActive, onActivate }: MotionCardProps) => (
-  <motion.button
-    type="button"
-    onMouseEnter={() => onActivate(motion.id)}
-    onFocus={() => onActivate(motion.id)}
-    onClick={() => onActivate(motion.id)}
-    className={`group relative w-full rounded-2xl border p-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-mint focus-visible:outline-offset-2 ${
-      motion.tileClass
-    } ${isActive ? "ring-2 ring-brand-blue ring-offset-2 ring-offset-white" : ""}`}
-  >
-    <motion.span
-      aria-hidden="true"
-      className="pointer-events-none absolute inset-0 rounded-2xl"
-      style={{ boxShadow: "0 0 0 2px #181E2A" }}
-      initial={{ opacity: 0.25 }}
-      animate={{ opacity: [0.25, 0.55, 0.25] }}
-      transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-    />
-    <h3 className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-brand-darkBlue">
-      <motion.icon className="h-4 w-4" />
-      <span>{motion.title}</span>
-    </h3>
-    <div className="mt-2 flex gap-2">
-      <span className="rounded-full bg-white/60 px-2 py-0.5 text-xs font-medium text-brand-darkBlue">
-        {motion.velocity}
-      </span>
-      <span className="rounded-full bg-white/60 px-2 py-0.5 text-xs font-medium text-brand-darkBlue">
-        {motion.cac} CAC
-      </span>
-    </div>
-    <p className="mt-3 text-xs text-brand-gray line-clamp-2">{motion.overview}</p>
-  </motion.button>
-);
+const MotionCard = ({ gtmMotion, isActive, onActivate }: MotionCardProps) => {
+  const IconComponent = gtmMotion.icon;
+  return (
+    <framerMotion.button
+      type="button"
+      onMouseEnter={() => onActivate(gtmMotion.id)}
+      onFocus={() => onActivate(gtmMotion.id)}
+      onClick={() => onActivate(gtmMotion.id)}
+      className={`group relative w-full rounded-2xl border p-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-mint focus-visible:outline-offset-2 ${
+        gtmMotion.tileClass
+      } ${isActive ? "ring-2 ring-brand-blue ring-offset-2 ring-offset-white" : ""}`}
+    >
+      <framerMotion.span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 rounded-2xl"
+        style={{ boxShadow: "0 0 0 2px #181E2A" }}
+        initial={{ opacity: 0.25 }}
+        animate={{ opacity: [0.25, 0.55, 0.25] }}
+        transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <h3 className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-brand-darkBlue">
+        <IconComponent className="h-4 w-4" />
+        <span>{gtmMotion.title}</span>
+      </h3>
+      <div className="mt-2 flex gap-2">
+        <span className="rounded-full bg-white/60 px-2 py-0.5 text-xs font-medium text-brand-darkBlue">
+          {gtmMotion.velocity}
+        </span>
+        <span className="rounded-full bg-white/60 px-2 py-0.5 text-xs font-medium text-brand-darkBlue">
+          {gtmMotion.cac} CAC
+        </span>
+      </div>
+      <p className="mt-3 text-xs text-brand-gray line-clamp-2">{gtmMotion.overview}</p>
+    </framerMotion.button>
+  );
+};
 
 const SectionLabel = ({ children }: { children: React.ReactNode }) => (
   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-blue/70">{children}</p>
