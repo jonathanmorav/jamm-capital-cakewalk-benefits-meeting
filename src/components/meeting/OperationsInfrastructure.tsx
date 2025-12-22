@@ -2,7 +2,7 @@ import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import NavigationArrow from "../navigation/NavigationArrow";
 import BottomCornerLogo from "../BottomCornerLogo";
-import { FileText, CheckCircle2, Building, Lock, Headphones, Wallet } from "lucide-react";
+import { CheckCircle2, Building, Lock, Headphones, Wallet } from "lucide-react";
 
 interface OperationsInfrastructureProps {
   onNavigateNext: () => void;
@@ -20,6 +20,7 @@ interface LicensingApproach {
   badgeClass: string;
   tileClass: string;
   overview: string;
+  detailOverview?: string;
   strategy?: string[];
   details?: string[];
   status?: string;
@@ -27,21 +28,6 @@ interface LicensingApproach {
 }
 
 const licensingApproaches: LicensingApproach[] = [
-  {
-    id: "producer",
-    title: "Producer Licensing",
-    icon: FileText,
-    badgeClass: "bg-soft-blue text-brand-darkBlue",
-    tileClass: "bg-soft-blue/80 border border-brand-lightBlue/60 text-brand-darkBlue",
-    overview: "Licensing requirements and processes for insurance producers and agents.",
-    strategy: [
-      "State-by-state licensing requirements and compliance",
-      "Producer appointment processes with carriers",
-      "Continuing education and renewal management",
-      "Multi-state licensing coordination",
-    ],
-    status: "In Progress",
-  },
   {
     id: "tpa",
     title: "TPA Licensing",
@@ -58,6 +44,7 @@ const licensingApproaches: LicensingApproach[] = [
     statusBullets: [
       "Supported by Patton Compliance out of Tallahassee, FL — boutique firm with specialty in TPA licensure with relationships with regulators across all DOIs",
       "TPA Resident License approved on 12/15/2025 in home State of Delaware",
+      "TPA license approved in Tennessee on 12/14/2025",
       "Resident license triggers in-kind approvals in Alaska, Idaho, Indiana, Iowa, Kansas, Rhode Island, South Dakota, Vermont, West Virginia — Timeline to approvals = 2 weeks to 60 days",
       "Coverage in 23+ States by EOQ1 '26",
       "Nationwide Coverage by Q4 2026",
@@ -69,14 +56,19 @@ const licensingApproaches: LicensingApproach[] = [
     icon: Building,
     badgeClass: "bg-soft-purple text-brand-darkBlue",
     tileClass: "bg-soft-purple/80 border border-soft-purple/60 text-brand-darkBlue",
-    overview: "Establishment and management of Multiple Employer Trust (MET) structures.",
+    overview: "Establishment and management of Multiple Employer Trust (MET) contracting vehicle — our primary method of contracting one (carriers & policies) to many (policyholders).",
     strategy: [
-      "Trust formation and legal structure",
-      "Employer participation agreements",
+      "One-to-many contracting vehicle",
+      "Fiduciary and directed Trust serving as the receiver, holder, and remitter of all insurance premiums",
       "Trust administration and compliance",
       "Regulatory oversight and reporting requirements",
     ],
-    status: "Planning",
+    statusBullets: [
+      "Corporate Trust filed in Delaware with support of Fisher Phillips (ERISA attorney) and Richards, Layton, & Finger (Delaware Statutory Trust attorney) on 12/8/2025",
+      "Corporate Trustee appointed through WSFS Bank in Delaware",
+      "Trust available for receipt of insurance premiums and contracting with carriers",
+      "Next step: By EOJan'26, redirect all current inbound premiums to Trust account (via Dwolla payment facilitator)",
+    ],
   },
   {
     id: "infosec",
@@ -85,6 +77,7 @@ const licensingApproaches: LicensingApproach[] = [
     badgeClass: "bg-soft-orange text-brand-darkBlue",
     tileClass: "bg-soft-orange/80 border border-soft-orange/60 text-brand-darkBlue",
     overview: "Enterprise-grade security and compliance framework protecting member data and ensuring regulatory adherence.",
+    detailOverview: "SOC 2 (Service Organization Control) is the industry standard for technology companies and service organizations — especially SaaS companies. It verifies that a company has strong security, privacy, and operational controls in place to protect customer data. A SOC 2 audit examines an organization's security posture based on the AICPA's Trust Services Criteria (like A-LIGN), providing an independent, reliable source of assurance. The result is a formal report that companies can share with partners, customers, and investors.",
     strategy: [
       "SOC 2 Type II compliance roadmap and controls",
       "HIPAA-aligned data handling and privacy practices",
@@ -92,7 +85,12 @@ const licensingApproaches: LicensingApproach[] = [
       "Vendor security assessments and third-party risk management",
       "Incident response and business continuity planning",
     ],
-    status: "In Progress",
+    statusBullets: [
+      "SOC 2 preparation kicked off with A-LIGN (Auditor) & Concertium (Consultant leading internal preparation)",
+      "SOC 2 Type I certification April 2026 — comes with provisional SOC 2 certification which can be communicated/marketed publicly",
+      "SOC 2 Type II certification Q1 2027 (requires 12 months of monitoring data post Type I certification)",
+      "Parallel workstreams ensuring preparedness and compliance across other compliance frameworks including PCI, PHI, HIPAA, CCPA, AML (SOC 2 preparation supports/solves for most of these frameworks)",
+    ],
   },
   {
     id: "customer-service",
@@ -100,15 +98,21 @@ const licensingApproaches: LicensingApproach[] = [
     icon: Headphones,
     badgeClass: "bg-soft-pink text-brand-darkBlue",
     tileClass: "bg-soft-pink/80 border border-soft-pink/60 text-brand-darkBlue",
-    overview: "Scalable customer and agent support model designed for high-volume SMB servicing.",
+    overview: "Scalable omni-channel customer and agent support model designed for high-volume SMB servicing.",
     strategy: [
-      "Self-service member portal with 24/7 access",
-      "Tiered support model with defined SLAs",
-      "Agent enablement tools and knowledge base",
-      "Escalation workflows and quality assurance",
-      "Omnichannel support (chat, email, phone)",
+      "AI-first approach: Knowledge base + AI chatbots targeting 65%+ self-serve resolution for policyholders and agents",
+      "Strategic advisor: John Sugar (ex VP Service Operations & Customer Support @ Prudential) guiding strategy and partner selection",
+      "Top-tier partner criteria: Proven insurance/benefits vertical expertise, technology-forward operations, and cultural alignment",
+      "Omni-channel infrastructure: Unified support across chat, email, phone with seamless handoffs and complete customer history",
+      "Tiered escalation model: AI → Tier 1 agents → Specialists with defined SLAs at each level",
+      "Performance-driven: Real-time dashboards, CSAT tracking, QA programs, and continuous improvement loops",
     ],
-    status: "Active",
+    statusBullets: [
+      "Evaluating three top-tier nearshore partners (Colombia, Dominican Republic, Belize, Trinidad & Tobago) — 50% cost savings vs. onshore with strong US cultural affinity and English proficiency",
+      "Full-service partnership model: not just staffing, but CX capability buildout including dashboards, CSAT analytics, omni-channel technology, playbooks, and knowledge base",
+      "Partner selection January 2026; soft go-live early Q2 2026",
+      "Future phase: Transition back-office operations to nearshore model for low-value, high-volume tasks",
+    ],
   },
   {
     id: "financial-ops",
@@ -116,15 +120,20 @@ const licensingApproaches: LicensingApproach[] = [
     icon: Wallet,
     badgeClass: "bg-soft-yellow text-brand-darkBlue",
     tileClass: "bg-soft-yellow/80 border border-soft-yellow/60 text-brand-darkBlue",
-    overview: "End-to-end financial operations including billing, collections, and carrier remittance.",
+    overview: "End-to-end financial operations spanning TPA operations, reseller partner management, and corporate finance.",
     strategy: [
-      "Automated premium billing and collection workflows",
-      "Carrier remittance and reconciliation processes",
-      "Commission tracking and agent payments",
-      "Financial reporting and audit trail",
-      "Trust account management and compliance",
+      "TPA Financial Operations: Policyholder invoicing, payment execution, premium collection, carrier remittance, and revenue realization",
+      "Reseller Finance Operations: Premium remittance and commission tracking for reselling partners",
+      "Corporate Finance Operations: G&A, expenses, payroll, and financial reporting",
+      "Trust account management with fiduciary compliance and audit trail",
+      "Automated billing workflows with real-time reconciliation",
+      "JAMM Capital: Strategic finance and investor relations services",
     ],
-    status: "Active",
+    statusBullets: [
+      "GrowthForce engaged December 2025 for Accounting, Controller, and Bookkeeping services",
+      "2025 books remediation in progress — targeting clean close by EOQ1 '26",
+      "Building financial operations foundation: Chart of accounts, GL structure, and reporting framework",
+    ],
   },
 ];
 
@@ -179,14 +188,14 @@ const OperationsInfrastructure = ({ onNavigateNext }: OperationsInfrastructurePr
           </motion.p>
         </motion.header>
 
-        {/* Six clickable boxes */}
+        {/* Five clickable boxes - 3 on top, 2 on bottom centered */}
         <motion.div
           variants={fadeUp}
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+          className="grid gap-6 md:grid-cols-2 lg:grid-cols-6 [&>*]:lg:col-span-2 [&>*:nth-last-child(2)]:lg:col-start-2 [&>*:nth-last-child(1)]:lg:col-start-4"
         >
           {licensingApproaches.map((approach) => {
             const isActive = approach.id === activeId;
@@ -211,7 +220,7 @@ const OperationsInfrastructure = ({ onNavigateNext }: OperationsInfrastructurePr
             className="rounded-3xl border border-brand-blue/15 bg-white/90 p-6 shadow-sm"
           >
             <h2 className="text-2xl font-semibold text-brand-darkBlue">{active.title}</h2>
-            <p className="mt-3 text-sm text-brand-gray md:text-base">{active.overview}</p>
+            <p className="mt-3 text-sm text-brand-gray md:text-base">{active.detailOverview || active.overview}</p>
 
             {/* Strategy */}
             {active.strategy?.length ? (
