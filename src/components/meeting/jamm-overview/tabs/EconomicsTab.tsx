@@ -218,3 +218,4 @@ const EconomicsTab = () => {
 
 export default EconomicsTab;
 
+
