@@ -50,8 +50,7 @@ const licensingApproaches: LicensingApproach[] = [
     tileClass: "bg-brand-lightMint/70 border border-brand-lightMint/60 text-brand-darkBlue",
     overview: "Third Party Administrator licensing unlocks delegated authority and end-to-end plan administration capabilities.",
     strategy: [
-      "Licensed in key states covering 80%+ of target SMB market footprint",
-      "Delegated authority for enrollment, billing, and claims administration",
+      "Delegated authority for enrollment, billing, and claims administration (future capability)",
       "Annual audit readiness with SOC 2-aligned compliance controls",
       "Fiduciary trust account management with carrier-grade financial reporting",
       "Scalable infrastructure for member communications and servicing",
