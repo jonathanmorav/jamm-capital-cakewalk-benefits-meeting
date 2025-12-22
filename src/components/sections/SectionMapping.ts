@@ -21,8 +21,8 @@ export const sections: DeckSection[] = [
   { id: "strategic-vision", title: "Strategic Vision" },
   { id: "product-technology", title: "Product & Technology" },
   { id: "product-showcase", title: "Product Showcase" },
-  { id: "go-to-market", title: "How we Go-to-Market" },
   { id: "gtm-spectrum", title: "GTM Motion Spectrum" },
+  { id: "go-to-market", title: "How we Go-to-Market" },
   { id: "operations-infrastructure", title: "Operations & Infrastructure" },
   { id: "investor-engagement-next-steps", title: "Investor Engagement & Next Steps" },
 ];
@@ -32,10 +32,10 @@ export const sectionComponents = {
   "cover": CoverScreen,
   "welcome-framing": WelcomeFraming,
   "strategic-vision": StrategicVision,
-  "go-to-market": GoToMarket,
-  "gtm-spectrum": GTMSpectrum,
   "product-technology": ProductTechnology,
   "product-showcase": ProductShowcase,
+  "gtm-spectrum": GTMSpectrum,
+  "go-to-market": GoToMarket,
   "operations-infrastructure": OperationsInfrastructure,
   "investor-engagement-next-steps": InvestorEngagementNextSteps,
 };
