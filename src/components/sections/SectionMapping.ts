@@ -3,6 +3,7 @@ import CoverScreen from "@/components/CoverScreen";
 import WelcomeFraming from "@/components/meeting/WelcomeFraming";
 import StrategicVision from "@/components/meeting/StrategicVision";
 import GoToMarket from "@/components/meeting/GoToMarket";
+import GTMSpectrum from "@/components/meeting/GTMSpectrum";
 import ProductTechnology from "@/components/meeting/ProductTechnology";
 import ProductShowcase from "@/components/meeting/ProductShowcase";
 import OperationsInfrastructure from "@/components/meeting/OperationsInfrastructure";
@@ -21,6 +22,7 @@ export const sections: DeckSection[] = [
   { id: "product-technology", title: "Product & Technology" },
   { id: "product-showcase", title: "Product Showcase" },
   { id: "go-to-market", title: "How we Go-to-Market" },
+  { id: "gtm-spectrum", title: "GTM Motion Spectrum" },
   { id: "operations-infrastructure", title: "Operations & Infrastructure" },
   { id: "investor-engagement-next-steps", title: "Investor Engagement & Next Steps" },
 ];
@@ -31,6 +33,7 @@ export const sectionComponents = {
   "welcome-framing": WelcomeFraming,
   "strategic-vision": StrategicVision,
   "go-to-market": GoToMarket,
+  "gtm-spectrum": GTMSpectrum,
   "product-technology": ProductTechnology,
   "product-showcase": ProductShowcase,
   "operations-infrastructure": OperationsInfrastructure,
