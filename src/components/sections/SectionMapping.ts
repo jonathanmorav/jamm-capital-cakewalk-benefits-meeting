@@ -18,9 +18,9 @@ export const sections: DeckSection[] = [
   { id: "cover", title: "Cakewalk & JAMM Capital Meeting" },
   { id: "welcome-framing", title: "Welcome & Framing" },
   { id: "strategic-vision", title: "Strategic Vision" },
-  { id: "go-to-market", title: "How we Go-to-Market" },
   { id: "product-technology", title: "Product & Technology" },
   { id: "product-showcase", title: "Product Showcase" },
+  { id: "go-to-market", title: "How we Go-to-Market" },
   { id: "operations-infrastructure", title: "Operations & Infrastructure" },
   { id: "investor-engagement-next-steps", title: "Investor Engagement & Next Steps" },
 ];
