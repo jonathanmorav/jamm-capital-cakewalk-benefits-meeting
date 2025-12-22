@@ -4,6 +4,7 @@ import WelcomeFraming from "@/components/meeting/WelcomeFraming";
 import StrategicVision from "@/components/meeting/StrategicVision";
 import GoToMarket from "@/components/meeting/GoToMarket";
 import ProductTechnology from "@/components/meeting/ProductTechnology";
+import ProductShowcase from "@/components/meeting/ProductShowcase";
 import OperationsInfrastructure from "@/components/meeting/OperationsInfrastructure";
 import InvestorEngagementNextSteps from "@/components/meeting/InvestorEngagementNextSteps";
 
@@ -19,6 +20,7 @@ export const sections: DeckSection[] = [
   { id: "strategic-vision", title: "Strategic Vision" },
   { id: "go-to-market", title: "How we Go-to-Market" },
   { id: "product-technology", title: "Product & Technology" },
+  { id: "product-showcase", title: "Product Showcase" },
   { id: "operations-infrastructure", title: "Operations & Infrastructure" },
   { id: "investor-engagement-next-steps", title: "Investor Engagement & Next Steps" },
 ];
@@ -30,6 +32,7 @@ export const sectionComponents = {
   "strategic-vision": StrategicVision,
   "go-to-market": GoToMarket,
   "product-technology": ProductTechnology,
+  "product-showcase": ProductShowcase,
   "operations-infrastructure": OperationsInfrastructure,
   "investor-engagement-next-steps": InvestorEngagementNextSteps,
 };
