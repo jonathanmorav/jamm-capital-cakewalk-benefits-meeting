@@ -85,7 +85,7 @@ const licensingApproaches: LicensingApproach[] = [
       },
       {
         tabLabel: "Association Contracting Model",
-        overview: "Partnering with established associations to access their carrier contracts and group purchasing power, enabling rapid market entry without direct carrier relationships.",
+        overview: "Partnering with established associations to access their carrier contracts and group purchasing power, enabling rapid market entry without direct carrier relationships. Additionally we have created our own association, America's Finest Business Owners Alliance (AFBOA).",
         strategy: [
           "Leverage existing association carrier relationships",
           "Access group purchasing power and negotiated rates",
