@@ -68,7 +68,7 @@ const licensingApproaches: LicensingApproach[] = [
     overview: "Contracting vehicles enabling one-to-many carrier relationships through Multiple Employer Trusts and Association partnerships.",
     tabs: [
       {
-        tabLabel: "Multiple Trust Establishment",
+        tabLabel: "Multiple Employer Trust Establishment",
         overview: "Establishment and management of Multiple Employer Trust (MET) contracting vehicle — our primary method of contracting one (carriers & policies) to many (policyholders).",
         strategy: [
           "One-to-many contracting vehicle",
